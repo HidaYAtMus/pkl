@@ -4,7 +4,6 @@ ioClient = io.connect("http://localhost:8000");
 
 // ioClient.emit('pesan', function(msg){
     // socket.emit ('judul').append(text(title));
-
 // });
 
 function searchTextOnGoogle(){
