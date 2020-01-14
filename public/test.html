@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart - page</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="temp/styles/styles.css">
+</head>
+<body>
+  <header class="header header--bg">
+    <a href="index.html"><img class="img-responsive" src="assets/images/pp.png" width="150" height="400" alt=""></a>    
+    <div class="container header--wrapper">
+        <center> <a class="button center-block" href="index.html">Beranda</a> </center>
+        <section class="subscribe">
+            <div class="container">
+              <div class="page-section page-section--medium text-center">
+                <div class="row">
+                  <div class="col-md-4">
+                    <p class="subscribe__paragraph">Test Web</p>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-md-7">
+                        <form action="">
+                          <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-5 pull">
+                        <button class="button__subscribe">Test</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </header>
+
+  <footer class="footer footer--bg">
+    <div class="container">
+      <div class="page-section page-section--small">
+        <div class="row gutters-100">
+          <div class="col-md-6 col-lg-2">
+            <h3 class="footer__title">Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Primacy &amp; Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <h3 class="footer__title">Services</h3>
+            <ul>
+              <li><a href="#">E-Marketing</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Business IT solution</a></li>
+              <li><a href="#">SEO Service</a></li>
+              <li><a href="#">BPO Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-5">
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGg-JYYu8OJRrP-PT2MPkGF4BzTwwnJNA"></script>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126376.11712902307!2d112.6362504150136!3d-8.177181472811911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd61f49276312e3%3A0x6d3c573a39296968!2sKec.%20Turen%2C%20Malang%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1578970682609!5m2!1sid!2sid" width="500" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+            <div id="map" style="height: 230px;"></div>
+            <script>
+              function initMap() {
+                var uluru = {lat: -25.363, lng: 131.044};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  center: {lat: 59.327, lng: 18.067},
+                  zoom: 11
+                });
+                var marker = new google.maps.Marker({
+                  position: {lat: 59.327, lng: 18.067},
+                  map: map,
+                  title: "Hello World!",
+                  icon: "assets/images/google-map-marker.png",
+                  draggable: true
+                });
+              }
+            </script>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <h3 class="footer__title">Contact</h3>
+            <ul>
+              <li><span class="glyphicon glyphicon-map-marker"></span><a href="#"> Street and bla bla name make 2 lines and all</a></li>
+              <li><span class="glyphicon glyphicon-earphone"></span><a href="#"> +00 01xx-xxxxxxx</a></li>
+              <li><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dartthemes.com</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      var $videoSrc = $("#video").attr("src");
+
+      $('#myModal').on('shown.bs.modal', function (e) {
+        $("#video").attr('src',$videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1" ); 
+      });
+
+      $('#myModal').on('hide.bs.modal', function (e) {
+        $("#video").attr('src',$videoSrc); 
+      });
+
+
+
+  });
+    
+  </script>
+</body>
+</html>  
