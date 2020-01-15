@@ -18,6 +18,12 @@ function searchTextOnGoogle(){
                       if(title === 'YouTube') {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
+                        var json = {
+                          "test" : "passsed",
+                          "Name test" : title
+                        }
+                        console.log(json);
+                        ioClient.emit('kirim', json);
                       } else {
                         console.log('Test failed =', title);
                         ioClient.emit ('judul', 'gagal');
