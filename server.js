@@ -1,7 +1,28 @@
-var app = require('express')();
+var app = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+
+// Configure MySQL connection
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'testing'
+  })
+
+//Establish MySQL connection
+connection.connect(function(err) {
+   if (err) 
+      throw err
+   else {
+       console.log('Connected to MySQL');
+       // Start the app when connection is ready
+      //  app.listen(3000);
+      //  console.log('Server listening on port 3000');
+ }
+});
 
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
