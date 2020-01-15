@@ -10,23 +10,22 @@ app.set('view engine', 'jade');
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
 
-// app.get('/', function(req, res) {
-//   return res.render('index');
-// });
-
-// io.on('connection', function(socket) {
-// //   socket.on('pesan', function(title) {
-//     io.emit('pesan', title);
-//         console.log(title);
-//   });
-
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
         console.log('message: ' + msg);
       });
+    console.log('user send');
+    socket.on('kirim', function(json){
+        console.log('message: ' + json);
+      });
   });
 
+  // io.on('json', function(data){
+  //   data_json = JSON.stringify(data);
+  //   alert(data_json);
+  // // Send data_json via AJAX...
+  // });
 
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
