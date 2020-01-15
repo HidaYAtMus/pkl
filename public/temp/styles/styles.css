@@ -3,6 +3,12 @@
   font-size: 28pt;
 }
 
+.warnateks {
+  color:	rgb(255, 250, 240);   
+  font-size: 10pt;
+}
+
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
