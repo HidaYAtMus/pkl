@@ -1,8 +1,9 @@
-const app = require('express')();
+
+const app = require('express')(),
   http = require('http').Server(app),
   io = require('socket.io')(http),
   path = require('path'),
-  bodyParser = require('body-parser'),
+  bodyParser=require('body-parser'),
   mysql = require('mysql');
 
 app.set('port', process.env.PORT || 8000);
@@ -18,18 +19,18 @@ let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: '',
-	database: 'testing'
+	database: 'testing_web'
   });
 
 //Establish MySQL connection
-// connection.connect(function(err) {
-//   if (err) 
-//      throw err
-//   else {
-//       console.log('Connected to MySQL');
-// }
-// });
-
+connection.connect(function(err) {
+  if (err) 
+     throw err
+  else {
+      console.log('Connected to MySQL');
+}
+});
+ 
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
@@ -45,6 +46,12 @@ io.on('connection', function(socket){
         });
       });
   });
+
+// app.route('/')
+//   .get('index.html');
+
+// app.route('/users')
+//   .get(todoList.users);
 
 
 http.listen(app.get('port'), function() {
