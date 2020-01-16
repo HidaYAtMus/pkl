@@ -14,13 +14,18 @@
   <header class="header header--bg">
     <a href="index.html"><img class="img-responsive" src="assets/images/w.png" width="100" height="500" alt="">  </a>   
     <div class="container header--wrapper">
-      <h1 class="header__title"><span class="header__title--light"></span> TestingWeb</h1>
-      <p class="header__paragraph">TestingWeb ini diperuntukkan untuk anda yang ingin cek WEB  yang sudah anda buat </p>
-      <a class="button" href="test.html">Test</a>
-      <!-- <a class="button" href="#">Lihat Record</a> -->
-      <a class="button" href="profile.html">Profil Kami</a>
-    </div>
-  </header>
+    <h1 class="warna-teks">Hasil Test </h1>
+    <table class="table1" id="mytable">    
+    <thead>
+      <tr>
+      <th>Nomer</th>
+			<th>Test</th>
+			<th>Hasil</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+</header>
 
   <footer class="footer footer--bg">
     <div class="container">
@@ -80,12 +85,23 @@
     </div>
   </footer>
 
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script>
+  <script src="script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
+      socket.on('connect', function() {
+        document.getElementById("socket").innerHTML = "socket connected";
+      });
+      socket.on('showrows', function(rows) {
+        var html='';
+        for (var i=0; i<rows.length; i++) {
+          html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
+        }  
+        document.getElementById("display").innerHTML = html;
+        console.log(rows);
+      });
+</script>
+  <!-- <script>
     $(document).ready(function() {
 
       var $videoSrc = $("#video").attr("src");
@@ -97,7 +113,7 @@
       $('#myModal').on('hide.bs.modal', function (e) {
         $("#video").attr('src',$videoSrc); 
       });
-
+ -->
 
 
   });
