@@ -4,7 +4,6 @@ var io = require('socket.io')(http);
 var path = require('path');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var myconnection = require('express-myconnection');
 
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
@@ -12,7 +11,7 @@ app.set('view engine', 'jade');
 
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
-app.use(myconnection(mysql, connection, 'pool'));
+
 
 // Configure MySQL connection
 var connection = mysql.createConnection({
@@ -53,7 +52,6 @@ io.on('connection', function(socket){
         })
       })
   });
-
   // io.on('json', function(data){
   //   data_json = JSON.stringify(data);
   //   alert(data_json);

@@ -25,18 +25,15 @@
     </thead>
     </table>
     <tbody>
-      <% if(data.length){
-        var no=0;
-        for(var i-0; i<data.length; i++){
-          no++;
-          %>
-          <tr>
-            <td> <%= no %></td>
-            <td> <%= data[i].nama_web %></td>
-            <td> <%= data[i]. hasil %></td>
-          </tr>
-        }
-      }
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+      <script>
+        var socket = io.connect('localhost:8000');  
+            socket.on('#dataonscreen', function(data) {
+            $('#dataonscreen').html(data.datafromserver);
+            console.log(data.datafromserver);
+            });
+      </script>
     </tbody>
 </div>
 </header>
