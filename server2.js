@@ -1,23 +1,18 @@
+
 const app = require('express')(),
   http = require('http').Server(app),
   io = require('socket.io')(http),
   path = require('path'),
   bodyParser=require('body-parser'),
   mysql = require('mysql');
-  // myconnection = require('express-myconnection');
-  
+
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
-// app.use(myconnection(mysql.createPool, connection, 'pool'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-//set folder public sebagai static folder untuk static file
-app.use(require('express').static(__dirname + '/public/hasil.html'));
 
 // Configure MySQL connection
 let connection = mysql.createConnection({
@@ -50,11 +45,6 @@ io.on('connection', function(socket){
           console.log('data inserted');
         });
       });
-    connection.query('SELECT * FROM report',function(err,rows){
-      if(err) throw err;
-      console.log(rows);
-      socket.emit('showrows', rows);
-    });
   });
 
 // app.route('/')
@@ -62,6 +52,7 @@ io.on('connection', function(socket){
 
 // app.route('/users')
 //   .get(todoList.users);
+
 
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
