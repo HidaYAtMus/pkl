@@ -24,17 +24,6 @@
       </tr>
     </thead>
     </table>
-    <tbody>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-        var socket = io.connect('localhost:8000');  
-            socket.on('#dataonscreen', function(data) {
-            $('#dataonscreen').html(data.datafromserver);
-            console.log(data.datafromserver);
-            });
-      </script>
-    </tbody>
 </div>
 </header>
 
