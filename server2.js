@@ -1,36 +1,41 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var path = require('path');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var myconnection = require('express-myconnection');
-
+const app = require('express')(),
+  http = require('http').Server(app),
+  io = require('socket.io')(http),
+  path = require('path'),
+  bodyParser=require('body-parser'),
+  mysql = require('mysql');
+  // myconnection = require('express-myconnection');
+  
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
-app.use(myconnection(mysql, connection, 'pool'));
+// app.use(myconnection(mysql.createPool, connection, 'pool'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+//set folder public sebagai static folder untuk static file
+app.use(require('express').static(__dirname + '/public/hasil.html'));
 
 // Configure MySQL connection
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: '',
-	database: 'testing'
+	database: 'testing_web'
   });
 
 //Establish MySQL connection
-// connection.connect(function(err) {
-//   if (err) 
-//      throw err
-//   else {
-//       console.log('Connected to MySQL');
-// }
-// });
-
+connection.connect(function(err) {
+  if (err) 
+     throw err
+  else {
+      console.log('Connected to MySQL');
+}
+});
+ 
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
@@ -39,26 +44,24 @@ io.on('connection', function(socket){
     console.log('user send');
     socket.on('kirim', function(json){
         console.log(JSON.stringify(json));
-        var scrape = JSON.stringify(json);
+        let scrape = JSON.stringify(json);
         connection.query("INSERT INTO report (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
           if(err) throw err;
           console.log('data inserted');
         });
       });
-      socket.on('test', function(err,conn){
-        if(err) throw err;
-        conn.query('SELECT * FROM report', function(err,rows){
-          if(err) throw err;
-          res.render('hasil',{data: rows, title: 'Express'});
-        })
-      })
+    connection.query('SELECT * FROM report',function(err,rows){
+      if(err) throw err;
+      console.log(rows);
+      socket.emit('showrows', rows);
+    });
   });
 
-  // io.on('json', function(data){
-  //   data_json = JSON.stringify(data);
-  //   alert(data_json);
-  // // Send data_json via AJAX...
-  // });
+// app.route('/')
+//   .get('index.html');
+
+// app.route('/users')
+//   .get(todoList.users);
 
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
