@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(express);
+var app = require('express')();
+var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var myconnection = require('express-myconnection');
 
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
@@ -12,6 +12,7 @@ app.set('view engine', 'jade');
 
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
+app.use(myconnection(mysql, connection, 'pool'));
 
 // Configure MySQL connection
 var connection = mysql.createConnection({
@@ -22,13 +23,13 @@ var connection = mysql.createConnection({
   });
 
 //Establish MySQL connection
-connection.connect(function(err) {
-  if (err) 
-     throw err
-  else {
-      console.log('Connected to MySQL');
-}
-});
+// connection.connect(function(err) {
+//   if (err) 
+//      throw err
+//   else {
+//       console.log('Connected to MySQL');
+// }
+// });
 
 io.on('connection', function(socket){
     console.log('a user connected');
@@ -44,6 +45,13 @@ io.on('connection', function(socket){
           console.log('data inserted');
         });
       });
+      socket.on('test', function(err,conn){
+        if(err) throw err;
+        conn.query('SELECT * FROM report', function(err,rows){
+          if(err) throw err;
+          res.render('hasil',{data: rows, title: 'Express'});
+        })
+      })
   });
 
   // io.on('json', function(data){
