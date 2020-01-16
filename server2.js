@@ -44,11 +44,11 @@ io.on('connection', function(socket){
       });
   });
 
-  // io.on('json', function(data){
-  //   data_json = JSON.stringify(data);
-  //   alert(data_json);
-  // // Send data_json via AJAX...
-  // });
+app.route('/')
+  .get(todoList.index);
+
+app.route('/users')
+  .get(todoList.users);
 
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
