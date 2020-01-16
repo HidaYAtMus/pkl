@@ -1,9 +1,9 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var path = require('path');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
+const app = require('express')();
+  http = require('http').Server(app),
+  io = require('socket.io')(http),
+  path = require('path'),
+  bodyParser = require('body-parser'),
+  mysql = require('mysql');
 
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
@@ -14,7 +14,7 @@ app.use(require('express').static(path.join(__dirname, 'bower_components')));
 
 
 // Configure MySQL connection
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: '',
@@ -38,25 +38,14 @@ io.on('connection', function(socket){
     console.log('user send');
     socket.on('kirim', function(json){
         console.log(JSON.stringify(json));
-        var scrape = JSON.stringify(json);
+        let scrape = JSON.stringify(json);
         connection.query("INSERT INTO report (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
           if(err) throw err;
           console.log('data inserted');
         });
       });
-      socket.on('test', function(err,conn){
-        if(err) throw err;
-        conn.query('SELECT * FROM report', function(err,rows){
-          if(err) throw err;
-          res.render('hasil',{data: rows, title: 'Express'});
-        })
-      })
   });
-  // io.on('json', function(data){
-  //   data_json = JSON.stringify(data);
-  //   alert(data_json);
-  // // Send data_json via AJAX...
-  // });
+
 
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
