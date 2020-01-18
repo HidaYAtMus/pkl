@@ -92,9 +92,21 @@ html,body {
     background-size: cover;
   }
 
+  .header--bg2{
+    background: url("../../assets/images/s.png") top center no-repeat;
+    background-size: cover;
+  }
+
 .header--wrapper{
     padding-top: 190px;
     padding-bottom: 200px;
+  }
+
+  .header--wrapper2{
+    padding-top: 10px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 
 .header__title{
