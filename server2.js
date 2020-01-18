@@ -45,6 +45,11 @@ io.on('connection', function(socket){
           console.log('data inserted');
         });
       });
+      connection.query('SELECT * FROM report',function(err,rows){
+        if(err) throw err;
+        console.log(rows);
+        socket.emit('showrows', rows);
+      });
   });
 
 // app.route('/')
