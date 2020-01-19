@@ -8,7 +8,7 @@
   <meta name="description" content="">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-  
+
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="temp/styles/styles.css">
@@ -22,7 +22,17 @@
       <div class="page-section text-center" style="position: relative; height:10px; width:10px">
       </div>
       <canvas id="grafik"></canvas>
+      <script src="/socket.io/socket.io.js"></script>
 <script>
+
+ var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
+ socket.on('showrows', function(rows) {
+        var html='';
+        for (var i=0; i<rows.length; i++) {
+          html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
+        }  
+        console.log(rows);
+      });
 var ctx = document.getElementById("grafik").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar', //type jenis grafiknya
@@ -30,7 +40,7 @@ var myChart = new Chart(ctx, {
         labels: ["Passed", "Fail", "Bug"],
         datasets: [{
             label: 'Hasil Data Pindad.com' , //judul data 
-            data: [62, 19, 5], //nilai data
+            data: ["SELECT * FROM report where hasil='passed'"], //nilai data
             backgroundColor: [ //warna grafik
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
@@ -123,41 +133,5 @@ var myChart = new Chart(ctx, {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-  <script src="script.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-<script>
-  console.log('test');
-    var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
-      socket.on('connect', function() {
-        // document.getElementById("socket").innerHTML = "socket connected";
-      });
-      socket.on('showrows', function(rows) {
-        var html='';
-        for (var i=0; i<rows.length; i++) {
-          html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
-        }  
-        // document.getElementById("display").innerHTML = html;
-        console.log(rows);
-      });
-</script>
-
-    $(document).ready(function() {
-
-      var $videoSrc = $("#video").attr("src");
-
-      $('#myModal').on('shown.bs.modal', function (e) {
-        $("#video").attr('src',$videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1" ); 
-      });
-
-      $('#myModal').on('hide.bs.modal', function (e) {
-        $("#video").attr('src',$videoSrc); 
-      });
-
-
-
-  });
-    
-  </script>
 </body>
 </html>  

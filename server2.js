@@ -5,7 +5,6 @@ const app = require('express')(),
   path = require('path'),
   bodyParser=require('body-parser'),
   mysql = require('mysql');
-
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -45,18 +44,13 @@ io.on('connection', function(socket){
           console.log('data inserted');
         });
       });
-      connection.query('SELECT * FROM report',function(err,rows){
+      connection.query("SELECT * FROM report where hasil='passed'",function(err,rows){
         if(err) throw err;
         console.log(rows);
         socket.emit('showrows', rows);
       });
-  });
 
-// app.route('/')
-//   .get('index.html');
-
-// app.route('/users')
-//   .get(todoList.users);
+    });
 
 
 http.listen(app.get('port'), function() {
