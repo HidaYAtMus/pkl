@@ -1,6 +1,6 @@
 const webdriver = require('selenium-webdriver'), 
 io = require("socket.io-client"),
-ioClient = io.connect("http://10.10.2.45");
+ioClient = io.connect("http://localhost:8000/");
 
 // ioClient.emit('pesan', function(msg){
     // socket.emit ('judul').append(text(title));
