@@ -27,10 +27,10 @@
 
  var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
  socket.on('showrows', function(rows) {
-        var html='';
-        for (var i=0; i<rows.length; i++) {
-          html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
-        }  
+        // var html='';
+        // for (var i=0; i<rows.length; i++) {
+        //   html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
+        // }  
         console.log(rows);
       });
 var ctx = document.getElementById("grafik").getContext('2d');
