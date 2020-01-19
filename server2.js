@@ -18,7 +18,7 @@ app.use(require('express').static(path.join(__dirname, 'bower_components')));
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '',
+	password: 'root',
 	database: 'testing_web'
   });
 
