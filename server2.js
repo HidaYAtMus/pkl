@@ -54,21 +54,20 @@ io.on('connection', function(socket){
       });
 
       //menampilkan semua isi data
-      connection.query("SELECT * FROM report",function(err,rows){
-        if(err) throw err;
-        console.info(rows);
-        socket.emit('showrows', rows);
-      });
+      // connection.query("SELECT * FROM report",function(err,rows){
+      //   if(err) throw err;
+      //   console.info(rows);
+      //   socket.emit('showrows', rows);
+      // });
 
-      //ambil data passed aja
-      socket.on('tampil', function(json){
-      let scrape = JSON.stringify(json);
-      connection.query("SELECT * FROM report WHERE hasil = passed VALUES ("+json.hasil+")",scrape, function (err, hsl){
-        if (err) throw err;
-          console.log(hsl);
-          socket.emit('tampil', hsl );
+      //menampilkan isi yang passed
+      connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
+        if(err) throw err;
+        tes = JSON.stringify(tes);
+        console.info(tes);
+        // document.write(JSON.stringify(tes));
+        socket.emit('test', tes);
       });
-    });
     });
 
 
