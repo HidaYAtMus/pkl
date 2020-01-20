@@ -15,13 +15,12 @@ function searchTextOnGoogle(){
             function sleep(){
                 driver.sleep(2000).then(function() {
                     driver.getTitle().then(function(title) {
-                      if(title === 'Youube') {
+                      if(title === 'YouTube') {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
                         var json = {nama_web : [title],
                                     hasil : ["passed"]
                                   }
-                        
                         console.log(json);
                         ioClient.emit('kirim', json);
                       } else {
