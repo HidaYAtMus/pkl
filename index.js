@@ -20,7 +20,7 @@ function searchTextOnGoogle(){
                         ioClient.emit ('judul', title);
                         var json = {nama_web : [title],
                                     hasil : ["passed"]
-                                  }
+                                  }              
                         console.log(json);
                         ioClient.emit('kirim', json);
                       } else {
