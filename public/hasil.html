@@ -23,49 +23,50 @@
       </div>
       <canvas id="grafik"></canvas>
       <script src="/socket.io/socket.io.js"></script>
-<script>
 
- var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
- socket.on('showrows', function(rows) {
+      <script>
+        var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000});
+        
+
+      socket.on('test', function(tes) {
         // var html='';
         // for (var i=0; i<rows.length; i++) {
         //   html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
         // }  
-        console.log(rows);
+        console.log(tes)
+        
       });
-var ctx = document.getElementById("grafik").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar', //type jenis grafiknya
-    data: {
-        labels: ["Passed", "Fail", "Bug"],
-        datasets: [{
-            label: 'Hasil Data Pindad.com' , //judul data 
-            data: ["SELECT * FROM report where hasil='passed'"], //nilai data
-            backgroundColor: [ //warna grafik
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
-            ],
-            borderColor: [ //warna garis grafik
-                'rgba(54, 162, 235, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(255, 206, 86, 1)'
-            ],
-            borderWidth: 0
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
+            var ctx = document.getElementById("grafik").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar', //type jenis grafiknya
+                data: {
+                    labels: ["Passed", "Fail"],
+                    datasets: [{
+                        label: 'Hasil Data Pindad.com' , //judul data 
+                        data: ['5','1'], //nilai data
+                        backgroundColor: [ //warna grafik
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [ //warna garis grafik
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255,99,132,1)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
                 }
-            }]
-        }
-    }
-});
-</script>
-</div>
+            });
+      </script>
+    </div>
 </section>
 </div>
 </header>
