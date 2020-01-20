@@ -33,27 +33,28 @@
         // for (var i=0; i<rows.length; i++) {
         //   html += rows[i].id + ' '+ rows[i].nama_web  + rows[i].hasil + '<br>';
         // }  
-        console.log(tes)
-        
-      });
-            var ctx = document.getElementById("grafik").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar', //type jenis grafiknya
-                data: {
-                    labels: ["Passed", "Fail"],
-                    datasets: [{
-                        label: 'Hasil Data Pindad.com' , //judul data 
-                        data: ['5','1'], //nilai data
-                        backgroundColor: [ //warna grafik
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 99, 132, 0.2)'
-                        ],
-                        borderColor: [ //warna garis grafik
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255,99,132,1)'
-                        ],
-                        borderWidth: 0
-                    }]
+        console.log(tes[0].jumlah)
+        console.log(tes[1].jumlah)
+      
+
+      var ctx = document.getElementById("grafik").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar', //type jenis grafiknya
+            data: {
+              labels: ["Passed", "Fail"],
+                datasets: [{
+                   label: 'Hasil Data Pindad.com' , //judul data 
+                   data: [tes[1].jumlah, tes[0].jumlah], //nilai data
+                   backgroundColor: [ //warna grafik
+                     'rgba(54, 162, 235, 0.2)',
+                     'rgba(255, 99, 132, 0.2)'
+                      ],
+                   borderColor: [ //warna garis grafik
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255,99,132,1)'
+                      ],
+                    borderWidth: 0
+                  }]
                 },
                 options: {
                     scales: {
@@ -65,6 +66,7 @@
                     }
                 }
             });
+          });
       </script>
     </div>
 </section>
