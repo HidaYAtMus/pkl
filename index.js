@@ -1,6 +1,6 @@
 const webdriver = require('selenium-webdriver'), 
 io = require("socket.io-client"),
-ioClient = io.connect("http://10.10.2.45");
+ioClient = io.connect("http://localhost:8000/");
 
 // ioClient.emit('pesan', function(msg){
     // socket.emit ('judul').append(text(title));
@@ -15,7 +15,7 @@ function searchTextOnGoogle(){
             function sleep(){
                 driver.sleep(2000).then(function() {
                     driver.getTitle().then(function(title) {
-                      if(title === 'YouTube') {
+                      if(title === 'Youube') {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
                         var json = {nama_web : [title],
@@ -26,7 +26,12 @@ function searchTextOnGoogle(){
                         ioClient.emit('kirim', json);
                       } else {
                         console.log('Test failed =', title);
-                        ioClient.emit ('judul', 'gagal');
+                        ioClient.emit ('judul', title);
+                        var json = {nama_web : [title],
+                          hasil : ["fail"]
+                        }
+                        console.log(json);
+                        ioClient.emit('kirim', json);
                     }
                       driver.quit();
                     });

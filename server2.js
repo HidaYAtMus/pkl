@@ -5,7 +5,6 @@ const app = require('express')(),
   path = require('path'),
   bodyParser=require('body-parser'),
   mysql = require('mysql');
-
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -13,7 +12,16 @@ app.set('view engine', 'jade');
 app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
 
+app.get('/', function(req, res){
+      res.sendFile(__dirname+'/public/hasil.html');
+  });
 
+  app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req,res,next){
+    req.io = io;
+    next();
+});
+  
 // Configure MySQL connection
 let connection = mysql.createConnection({
 	host: 'localhost',
@@ -45,18 +53,24 @@ io.on('connection', function(socket){
           console.log('data inserted');
         });
       });
-      connection.query('SELECT * FROM report',function(err,rows){
+
+      //menampilkan semua isi data
+      connection.query("SELECT * FROM report",function(err,rows){
         if(err) throw err;
-        console.log(rows);
+        console.info(rows);
         socket.emit('showrows', rows);
       });
-  });
 
-// app.route('/')
-//   .get('index.html');
-
-// app.route('/users')
-//   .get(todoList.users);
+      //ambil data passed aja
+      socket.on('tampil', function(json){
+      let scrape = JSON.stringify(json);
+      connection.query("SELECT * FROM report WHERE hasil = passed VALUES ("+json.hasil+")",scrape, function (err, hsl){
+        if (err) throw err;
+          console.log(hsl);
+          socket.emit('tampil', hsl );
+      });
+    });
+    });
 
 
 http.listen(app.get('port'), function() {
