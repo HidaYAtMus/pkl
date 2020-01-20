@@ -46,7 +46,6 @@ io.on('connection', function(socket){
       });
     console.log('user send');
     socket.on('kirim', function(json){
-        console.log(JSON.stringify(json));
         let scrape = JSON.stringify(json);
         connection.query("INSERT INTO report (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
           if(err) throw err;
