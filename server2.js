@@ -63,10 +63,17 @@ io.on('connection', function(socket){
       //menampilkan isi yang passed
       connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
         if(err) throw err;
-        tes = JSON.stringify(tes);
-        console.info(tes);
+        // tes = JSON.stringify(tes);
+        // console.info(tes);
+        console.info(tes[0].jumlah);
+        console.info(tes[1].jumlah);
+        // for(i=0;i<6;i++){
+        //     console.log(tes)
+        // }		
+          socket.emit('test', tes);
+      
         // document.write(JSON.stringify(tes));
-        socket.emit('test', tes);
+        
       });
     });
 
