@@ -25,7 +25,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'root',
+	password: '',
 	database: 'testing_web'
   });
 
@@ -61,8 +61,8 @@ io.on('connection', function(socket){
         console.info(tes[1].jumlah);
         socket.emit('test', tes);
       });
-      
-      socket.on('vid', function(json){
+    // });
+      socket.on('div', function(json){
         let scrape = JSON.stringify(json);
         connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
           if(err) throw err;
@@ -76,7 +76,7 @@ io.on('connection', function(socket){
         console.log('hasil video')
         console.info(vid[0].hsl);
         console.info(vid[1].hsl);
-        socket.emit('divmu', vid);
+        socket.emit('t', vid);
       });
     });
 
