@@ -13,7 +13,7 @@ function pindad(){
             if(title === title) {
                 console.log('Test passed = ', title);
                 ioClient.emit ('judul', title);
-                var json = {nama_web : [title],
+                var json = {nama_web : ["click searchbox"],
                             hasil : ["passed"]
                            }
                         
@@ -36,7 +36,7 @@ function pindad(){
             if(title === title) {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
-                var json = {nama_web : [title],
+                var json = {nama_web : ["input music"],
                             hasil : ["passed"]
                            }
                         
@@ -59,7 +59,7 @@ function pindad(){
             if(title === title) {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
-                var json = {nama_web : [title],
+                var json = {nama_web : ["click search_btn"],
                             hasil : ["passed"]
                            }
                         

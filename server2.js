@@ -56,7 +56,10 @@ io.on('connection', function(socket){
       //menampilkan isi yang passed
       connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
         if(err) throw err;
-        socket.emit('test', tes);
+        
+        console.info(tes[0].jumlah);
+        console.info(tes[1].jumlah);
+        // socket.emit('test', tes);
       });
       socket.on('tempramas', function(json){
         let scrape = JSON.stringify(json);
@@ -65,7 +68,7 @@ io.on('connection', function(socket){
           console.log('data inserted');
           connection.query("SELECT COUNT(hasil) AS jumlah FROM tempramas GROUP BY hasil",function(err,tes){
             if(err) throw err;
-            socket.emit('test', tes);
+            // socket.emit('test', tes);
           });
         });
       });
@@ -74,10 +77,13 @@ io.on('connection', function(socket){
         connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
           if(err) throw err;
           console.log('data inserted');
-          connection.query("SELECT COUNT(hasil) AS jumlah FROM vid_divmu GROUP BY hasil",function(err,tes){
-            if(err) throw err;
-            socket.emit('test', tes);
-          });
+        });
+        connection.query("SELECT COUNT(hasil) AS jumlah FROM vid_divmu GROUP BY hasil",function(err,jml){
+          if(err) throw err;
+          
+          console.info(jml[0].jumlah);
+          // console.info(jml[1].jumlah);
+          socket.emit('test', tes);
         });
       });
     });
