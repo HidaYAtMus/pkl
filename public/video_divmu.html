@@ -28,9 +28,9 @@
 
       <script type="text/javascript">
         var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000})
-        socket.on('video', function(vid){  
-        console.log(vid[0].hasil)
-        console.log(vid[1].hasil)
+        socket.on('divmu', function(vid){  
+        console.log(vid[0].hsl)
+        console.log(vid[1].hsl)
 
       var ctx = document.getElementById("grafik").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -39,7 +39,7 @@
               labels: ["Passed", "Fail"],
                 datasets: [{
                    label: 'Hasil Data Pindad.com' , //judul data 
-                   data: [vid[1].hasil, vid[0].hasil], //nilai data
+                   data: [vid[1].hsl, vid[0].hsl], //nilai data
                    backgroundColor: [ //warna grafik
                      'rgba(54, 162, 235, 0.2)',
                      'rgba(255, 99, 132, 0.2)'
