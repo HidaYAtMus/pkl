@@ -554,3 +554,31 @@ html,body {
   padding-right: 50px;
   padding-left: 50px;
 }
+/* dropdown */
+.mainmenubtn {
+  background-color: transparent ;
+  color: white;
+  display: inline-block;
+  border: black;
+  cursor: pointer;
+  padding:20px;
+  margin-top:20px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-child {
+  display: none;
+  background-color: black;
+  min-width: 200px;
+}
+.dropdown-child a {
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown:hover .dropdown-child {
+  display: block;
+}
