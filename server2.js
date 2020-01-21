@@ -56,9 +56,6 @@ io.on('connection', function(socket){
       //menampilkan isi yang passed
       connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
         if(err) throw err;
-        
-        console.info(tes[0].jumlah);
-        console.info(tes[1].jumlah);
         socket.emit('test', tes);
       });
       socket.on('tempramas', function(json){

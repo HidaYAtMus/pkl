@@ -5,7 +5,7 @@ ioClient = io.connect("http://localhost:8000");
 function pindad(){
     var driver = new webdriver.Builder().forBrowser('chrome').build();
 
-    driver.get('http://tempramas.divmu.pindad.co.id/home').then(function(){
+    driver.get('http://dev.tempramas.divmu.pindad.co.id/home').then(function(){
     driver.findElement(webdriver.By.linkText("9")).click().then(function(){
             function sleep(){
                 driver.sleep(2000).then(function() {
