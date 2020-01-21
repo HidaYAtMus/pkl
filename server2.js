@@ -1,4 +1,3 @@
-
 const app = require('express')(),
   http = require('http').Server(app),
   io = require('socket.io')(http),
@@ -38,6 +37,7 @@ connection.connect(function(err) {
       console.log('Connected to MySQL');
 }
 });
+ 
  
 io.on('connection', function(socket){
     console.log('a user connected');
