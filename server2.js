@@ -48,12 +48,14 @@ let today = new Date(),
 today = yyyy + '/' + mm + '/' + dd + '/' + time;
 
 console.log(today);
+
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
         console.log('message: ' + msg);
       });
     console.log('user send');
+    
     socket.on('kirim', function(json){
         console.log(today);
         let scrape = JSON.stringify(json);
@@ -71,8 +73,20 @@ io.on('connection', function(socket){
         console.info(tes[1].jumlah);
         socket.emit('test', tes);
       });
+      
+    //   socket.on('clientEvent', function(data) {
+    //     console.log(data);
+    //  });
 
-    });
+    socket.on('setUsername', function(data) {
+      if(users.indexOf(data) > -1) {
+         users.push(data);
+         socket.emit('userSet', {username: data});
+      } else {
+         socket.emit('userExists', data + ' username is taken! Try some other username.');
+      }
+   })
+});
 
 
 http.listen(app.get('port'), function() {

@@ -7,7 +7,6 @@ ioClient = io.connect("http://localhost:8000");
 function pindad(){
     var driver = new webdriver.Builder().forBrowser('chrome').build();
 
-
     driver.get('http://video.divmu.pindad.co.id/').then(function(){
     
     driver.findElement(webdriver.By.id("searchtxtbox")).click().then(function(){
