@@ -48,12 +48,14 @@ var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(
 today = yyyy + '/' + mm + '/' + dd + '/' + time;
 
 console.log(today);
+
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
         console.log('message: ' + msg);
       });
     console.log('user send');
+    
     socket.on('kirim', function(json){
         console.log(today);
         let scrape = JSON.stringify(json);
@@ -64,31 +66,45 @@ io.on('connection', function(socket){
       });
 
       //menampilkan isi yang passed
-      connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
+      connection.query("SELECT COUNT(hasil) AS jumlah FROM record GROUP BY hasil",function(err,tes){
         if(err) throw err;
         console.log('hasil test')
         console.info(tes[0].jumlah);
         console.info(tes[1].jumlah);
         socket.emit('test', tes);
       });
-    // });
-      socket.on('div', function(json){
-        let scrape = JSON.stringify(json);
-        connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
-          if(err) throw err;
-          console.log('data inserted');
-        });
-      });
+      
+    //   socket.on('clientEvent', function(data) {
+    //     console.log(data);
+    //  });
 
-      //menampilkan isi yang passed
-      connection.query("SELECT COUNT(hasil) AS hsl FROM vid_divmu GROUP BY hasil",function(err,vid){
-        if(err) throw err;
-        console.log('hasil video')
-        console.info(vid[0].hsl);
-        console.info(vid[1].hsl);
-        socket.emit('t', vid);
-      });
+    socket.on('setUsername', function(data) {
+      if(users.indexOf(data) > -1) {
+         users.push(data);
+         socket.emit('userSet', {username: data});
+      } else {
+         socket.emit('userExists', data + ' username is taken! Try some other username.');
+      }
+   })
     });
+
+     //   socket.on('div', function(json){
+    //     let scrape = JSON.stringify(json);
+    //     connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
+    //       if(err) throw err;
+    //       console.log('data inserted');
+    //     });
+    //   });
+
+    //   //menampilkan isi yang passed
+    //   connection.query("SELECT COUNT(hasil) AS hsl FROM vid_divmu GROUP BY hasil",function(err,vid){
+    //     if(err) throw err;
+    //     console.log('hasil video')
+    //     console.info(vid[0].hsl);
+    //     console.info(vid[1].hsl);
+    //     socket.emit('t', vid);
+    //   });
+    // });
 
 
 http.listen(app.get('port'), function() {
