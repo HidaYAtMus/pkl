@@ -5,7 +5,7 @@ ioClient = io.connect("http://localhost:8000");
 function pindad(){
     var driver = new webdriver.Builder().forBrowser('chrome').build();
 
-    driver.get('http://tempramas.divmu.pindad.co.id/home').then(function(){
+    driver.get('http://dev.tempramas.divmu.pindad.co.id/home').then(function(){
     driver.findElement(webdriver.By.linkText("9")).click().then(function(){
             function sleep(){
                 driver.sleep(2000).then(function() {
@@ -14,11 +14,61 @@ function pindad(){
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
                         var json = {nama_web : [title],
+                                    fitur : ["click 9"],
                                     hasil : ["passed"]
                                   }
                         
                         console.log(json);
-                        ioClient.emit('tempramas', json);
+                        ioClient.emit('kirim', json);
+                      } else {
+                        console.log('Test failed =', title);
+                        ioClient.emit ('judul', 'gagal');
+                    }
+                      // driver.quit();
+                    });
+                  });
+                }
+                sleep();
+    });
+            driver.findElement(webdriver.By.linkText("5.56")).click().then(function(){
+              function sleep(){
+                driver.sleep(2000).then(function() {
+                    driver.getTitle().then(function(title) {
+                      if(title === title) {
+                        console.log('Test passed = ', title);
+                        ioClient.emit ('judul', title);
+                        var json = {nama_web : [title],
+                                    fitur :["click 5.56"],
+                                    hasil : ["passed"]
+                                  }
+                        
+                        console.log(json);
+                        ioClient.emit('kirim', json);
+                      } else {
+                        console.log('Test failed =', title);
+                        ioClient.emit ('judul', 'gagal');
+                    }
+                      // driver.quit();
+                    });
+                  });
+                }
+                sleep();
+            });
+            
+            driver.findElement(webdriver.By.linkText("7.62")).click().then(function(){
+              function sleep(){
+                driver.sleep(2000).then(function() {
+                    driver.getTitle().then(function(title) {
+                      if(title === title) {
+                        console.log('Test passed = ', title);
+                        ioClient.emit ('judul', title);
+                        var json = {nama_web : [title],
+                                    fitur   :["click 7.62"],
+                                    hasil : ["passed"]
+                                  }
+                        
+                        console.log(json);
+                        ioClient.emit('kirim', json);
                       } else {
                         console.log('Test failed =', title);
                         ioClient.emit ('judul', 'gagal');
@@ -28,54 +78,7 @@ function pindad(){
                   });
                 }
                 sleep();
-    });
-            // driver.findElement(webdriver.By.linkText("5.56")).click().then(function(){
-            //   function sleep(){
-            //     driver.sleep(2000).then(function() {
-            //         driver.getTitle().then(function(title) {
-            //           if(title === title) {
-            //             console.log('Test passed = ', title);
-            //             ioClient.emit ('judul', title);
-            //             var json = {nama_web : [title],
-            //                         hasil : ["passed"]
-            //                       }
-                        
-            //             console.log(json);
-            //             ioClient.emit('kirim', json);
-            //           } else {
-            //             console.log('Test failed =', title);
-            //             ioClient.emit ('judul', 'gagal');
-            //         }
-            //           // driver.quit();
-            //         });
-            //       });
-            //     }
-            //     sleep();
-            // });
-            
-            // driver.findElement(webdriver.By.linkText("7.62")).click().then(function(){
-            //   function sleep(){
-            //     driver.sleep(2000).then(function() {
-            //         driver.getTitle().then(function(title) {
-            //           if(title === title) {
-            //             console.log('Test passed = ', title);
-            //             ioClient.emit ('judul', title);
-            //             var json = {nama_web : [title],
-            //                         hasil : ["passed"]
-            //                       }
-                        
-            //             console.log(json);
-            //             ioClient.emit('kirim', json);
-            //           } else {
-            //             console.log('Test failed =', title);
-            //             ioClient.emit ('judul', 'gagal');
-            //         }
-            //           // driver.quit();
-            //         });
-            //       });
-            //     }
-            //     sleep();
-            // });
+            });
            
 });    
 }

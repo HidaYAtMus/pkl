@@ -4,6 +4,7 @@ const app = require('express')(),
   path = require('path'),
   bodyParser=require('body-parser'),
   mysql = require('mysql');
+  // DATE_FORMATER = require( 'dateformat' );
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -38,7 +39,15 @@ connection.connect(function(err) {
 }
 });
  
- 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+today = yyyy + '/' + mm + '/' + dd + '/' + time;
+
+console.log(today);
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('judul', function(msg){
@@ -46,8 +55,9 @@ io.on('connection', function(socket){
       });
     console.log('user send');
     socket.on('kirim', function(json){
+        console.log(today);
         let scrape = JSON.stringify(json);
-        connection.query("INSERT INTO report (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
+        connection.query("INSERT INTO record (nama_web,fitur,hasil,tanggal) VALUES ('" + json.nama_web + "', '"+json.fitur+"','" + json.hasil + "', '"+today+"');",scrape, function(err, result) {
           if(err) throw err;
           console.log('data inserted');
         });
