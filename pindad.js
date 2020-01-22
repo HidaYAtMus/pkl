@@ -23,7 +23,7 @@ function pindad(){
                                   }
                         
                         console.log(json);
-                        ioClient.emit('kirim', json);
+                        ioClient.emit('vid', json);
                       } else {
                         console.log('Test failed =', title);
                         ioClient.emit ('judul', 'gagal');

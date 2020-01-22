@@ -39,11 +39,11 @@ connection.connect(function(err) {
 }
 });
  
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+let today = new Date(),
+    dd = String(today.getDate()).padStart(2, '0'),
+    mm = String(today.getMonth() + 1).padStart(2, '0'), //January is 0!
+    yyyy = today.getFullYear(),
+    time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
 today = yyyy + '/' + mm + '/' + dd + '/' + time;
 
@@ -64,13 +64,14 @@ io.on('connection', function(socket){
       });
 
       // //menampilkan isi yang passed
-      // connection.query("SELECT COUNT(hasil) AS jumlah FROM record GROUP BY hasil",function(err,tes){
-      //   if(err) throw err;
-      //   console.log('hasil test')
-      //   // console.info(tes[0].jumlah);
-      //   // console.info(tes[1].jumlah);
-      //   socket.emit('test', tes);
-      // });
+      connection.query(" SELECT COUNT(hasil) AS jumlah FROM record WHERE nama_web LIKE '%Video%' GROUP BY hasil;",function(err,tes){
+        if(err) throw err;
+        console.log('hasil test')
+        console.info(tes[0].jumlah);
+        console.info(tes[1].jumlah);
+        socket.emit('test', tes);
+      });
+
     });
 
 

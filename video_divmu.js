@@ -10,7 +10,7 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === title) {
+            if(title === 'ok') {
                 console.log('Test passed = ', title);
                 ioClient.emit ('judul', title);
                 var json = {nama_web : [title],
@@ -40,7 +40,7 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === title) {
+            if(title === 'ok') {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
                 var json = {nama_web : [title],
@@ -70,7 +70,7 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === title) {
+            if(title === 'ok') {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
                 var json = {nama_web : [title],
