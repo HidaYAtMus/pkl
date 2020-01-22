@@ -15,10 +15,11 @@ function pindad(){
             function sleep(){
                 driver.sleep(2000).then(function() {
                     driver.getTitle().then(function(title) {
-                      if(title === title) {
+                      if(title === 'ok') {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
                         var json = {nama_web : [title],
+                          fitur : ["click_searchtxtbox"],
                                     hasil : ["passed"]
                                   }
                         
@@ -27,6 +28,13 @@ function pindad(){
                       } else {
                         console.log('Test failed =', title);
                         ioClient.emit ('judul', 'gagal');
+                        var json = {nama_web : [title],
+                          fitur : ["click_searchtxtbox"],
+                                    hasil : ["fail"]
+                                  }
+                        
+                        console.log(json);
+                        ioClient.emit('vid', json);
                     }
                       driver.quit();
                     });
