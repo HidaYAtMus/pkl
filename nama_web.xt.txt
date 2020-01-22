@@ -1,7 +1,7 @@
-http://bukutamu.divmu.pindad.co.id/
+http://bukutamu-dev.divmu.pindad.co.id/
 http://perkakas.divmu.pindad.co.id/
 http://tempramas.divmu.pindad.co.id/home
 http://simonkak.divmu.pindad.co.id/users/login
 http://video.divmu.pindad.co.id/
 
- 
+ login admin, admin123 / resepsionis, resepsionis123 (bukutamu)
