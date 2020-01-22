@@ -63,14 +63,31 @@ io.on('connection', function(socket){
         });
       });
 
-      // //menampilkan isi yang passed
-      // connection.query("SELECT COUNT(hasil) AS jumlah FROM record GROUP BY hasil",function(err,tes){
-      //   if(err) throw err;
-      //   console.log('hasil test')
-      //   // console.info(tes[0].jumlah);
-      //   // console.info(tes[1].jumlah);
-      //   socket.emit('test', tes);
-      // });
+      //menampilkan isi yang passed
+      connection.query("SELECT COUNT(hasil) AS jumlah FROM report GROUP BY hasil",function(err,tes){
+        if(err) throw err;
+        console.log('hasil test')
+        console.info(tes[0].jumlah);
+        console.info(tes[1].jumlah);
+        socket.emit('test', tes);
+      });
+    // });
+      socket.on('div', function(json){
+        let scrape = JSON.stringify(json);
+        connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
+          if(err) throw err;
+          console.log('data inserted');
+        });
+      });
+
+      //menampilkan isi yang passed
+      connection.query("SELECT COUNT(hasil) AS hsl FROM vid_divmu GROUP BY hasil",function(err,vid){
+        if(err) throw err;
+        console.log('hasil video')
+        console.info(vid[0].hsl);
+        console.info(vid[1].hsl);
+        socket.emit('t', vid);
+      });
     });
 
 
