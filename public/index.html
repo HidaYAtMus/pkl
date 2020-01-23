@@ -219,40 +219,49 @@
 
       <script type="text/javascript">
         socket.on('video', function(tes){  
-        console.log(tes[0].jumlah)
-        console.log(tes[1].jumlah)
+
+        console.info(tes[0].tanggal);
+        console.info(tes[1].tanggal);
+        console.info(tes[2].tanggal);
+        console.info(tes[3].tanggal);
+        console.info(tes[4].tanggal);
+        console.info(tes[0].passed);
+        console.info(tes[0].fail);
+        console.info(tes[1].passed);
+        console.info(tes[1].fail);
+        console.info(tes[2].passed);
+        console.info(tes[2].fail);
+        console.info(tes[3].passed);
+        console.info(tes[3].fail);
+        console.info(tes[4].passed);
+        console.info(tes[4].fail);
+      
         // console.log(tes[2].tanggal)
       var ctx = document.getElementById("grafik").getContext('2d');
-  
-              var myChart = new Chart(ctx, {
-            type: 'bar', //type jenis grafiknya
-            data: {
-                labels: ["Passed", "Fail"],
-                datasets: [{
-                    label: 'Hasil Data Pindad.com' , //judul data 
-                    data: [tes[1].jumlah, tes[0].jumlah], //nilai data
-                    backgroundColor: [ //warna grafik
-                        'rgba(63, 255, 128)',
-                        'rgba(255, 99, 132)'
-                    ],
-                    borderColor: [ //warna garis grafik
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255,99,132,1)'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
-          });
+      var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [(tes[0].tanggal),(tes[1].tanggal),(tes[2].tanggal),(tes[3].tanggal),(tes[4].tanggal)],
+        datasets: [{
+            label: 'passed',
+            // backgroundColor: ['rgb(255, 99, 132)'],
+            borderColor: 'rgb(0, 200, 0)',
+            data: [tes[0].passed,tes[1].passed,tes[2].passed,tes[3].passed,tes[4].passed]
+        },{
+            label: 'Fail',
+            // backgroundColor: ['rgb(0,0,0)'],
+            borderColor: 'rgb(	220 20 60)',
+            data: [tes[0].fail,tes[1].fail,tes[2].fail,tes[3].fail,tes[4].fail]
+        }
+      ]
+    },
+  });
+    // Configuration options go here
+    options: {}
+});
       </script>
     </div>
   </div>
