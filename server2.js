@@ -26,7 +26,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '',
+	password: 'root',
 	database: 'testing_web'
   });
 
@@ -66,12 +66,22 @@ io.on('connection', function(socket){
       });
 
       //menampilkan isi yang passed
-      connection.query("SELECT COUNT(hasil) AS jumlah FROM record GROUP BY hasil",function(err,tes){
+      connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%video%" GROUP BY hasil',function(err,tes){
         if(err) throw err;
-        console.log('hasil test')
+        console.log('hasil video')
         console.info(tes[0].jumlah);
         console.info(tes[1].jumlah);
-        socket.emit('test', tes);
+        // console.info(tes[2].tanggal);
+        socket.emit('video', tes);
+      });
+
+      connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%Home%" GROUP BY hasil',function(err,temp){
+        if(err) throw err;
+        console.log('hasil tempramas')
+        console.info(temp[0].jumlah);
+        console.info(temp[1].jumlah);
+        // console.info(tes[2].tanggal);
+        socket.emit('tempramas', temp);
       });
       
     //   socket.on('clientEvent', function(data) {

@@ -24,7 +24,7 @@ function pindad(){
                                   }
                         
                         console.log(json);
-                        ioClient.emit('vid', json);
+                        ioClient.emit('kirim', json);
                       } else {
                         console.log('Test failed =', title);
                         ioClient.emit ('judul', 'gagal');
@@ -34,7 +34,7 @@ function pindad(){
                                   }
                         
                         console.log(json);
-                        ioClient.emit('vid', json);
+                        ioClient.emit('kirim', json);
                     }
                       driver.quit();
                     });
