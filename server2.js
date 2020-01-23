@@ -3,7 +3,9 @@ const app = require('express')(),
   io = require('socket.io')(http),
   path = require('path'),
   bodyParser=require('body-parser'),
-  mysql = require('mysql');
+  mysql = require('mysql'),
+  dateFormat = require('dateformat');
+
   // DATE_FORMATER = require( 'dateformat' );
 app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, 'views'));
@@ -39,15 +41,12 @@ connection.connect(function(err) {
 }
 });
  
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+// Pengambilan Date Time
+let now = new Date();
+day = dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+console.log(day);
 
-today = mm + '/' + dd + '/' + yyyy + '/' + time;
 
-console.log(today);
 
 io.on('connection', function(socket){
     console.log('a user connected');
@@ -69,12 +68,59 @@ io.on('connection', function(socket){
       connection.query('SELECT t2.tanggal, t2.fail , t1.passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed"GROUP BY tanggal) AS t1 INNER JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
         if(err) throw err;
         console.log('hasil video')
+        
         console.info(tes[0].tanggal);
+        // Convert data
+        let date1="2020-01-22T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date1.split(" ");
+          date1=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date1);
         console.info(tes[1].tanggal);
+          let date2="2020-01-23T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date2.split(" ");
+          date2=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date2);
         console.info(tes[2].tanggal);
+          let date3="2020-01-24T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date3.split(" ");
+          date3=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date3);
         console.info(tes[3].tanggal);
+          let date4="2020-01-25T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date4.split(" ");
+          date4=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date4);
         console.info(tes[4].tanggal);
-        console.info(tes[5].tanggal);
+          let date="2020-01-26T17:00:00.000Z".toString("yyyyMMddHHmmss").
+                      replace(/T/, ' ').      
+                      replace(/\..+/, '');
+      
+                      var auxCopia=date.split(" ");
+                      date=auxCopia[0];
+                      var hour=auxCopia[1];
+
+          console.log(date);
+
         console.info(tes[0].passed);
         console.info(tes[0].fail);
         console.info(tes[1].passed);
@@ -85,8 +131,8 @@ io.on('connection', function(socket){
         console.info(tes[3].fail);
         console.info(tes[4].passed);
         console.info(tes[4].fail);
-        console.info(tes[5].passed);
-        console.info(tes[5].fail);
+        // console.info(tes[5].passed);
+        // console.info(tes[5].fail);
         // console.info(tes[2].t2.fail);
         // console.info(tes[2].tanggal);
         socket.emit('video', tes);
