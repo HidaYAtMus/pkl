@@ -26,7 +26,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'root',
+	password: '',
 	database: 'testing_web'
   });
 
@@ -45,7 +45,7 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-today = yyyy + '/' + mm + '/' + dd + '/' + time;
+today = mm + '/' + dd + '/' + yyyy + '/' + time;
 
 console.log(today);
 
@@ -66,36 +66,53 @@ io.on('connection', function(socket){
       });
 
       //menampilkan isi yang passed
-      connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%video%" GROUP BY hasil',function(err,tes){
+      connection.query('SELECT t2.tanggal, t2.fail , t1.passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed"GROUP BY tanggal) AS t1 INNER JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
         if(err) throw err;
         console.log('hasil video')
-        console.info(tes[0].jumlah);
-        console.info(tes[1].jumlah);
+        console.info(tes[0].tanggal);
+        console.info(tes[1].tanggal);
+        console.info(tes[2].tanggal);
+        console.info(tes[3].tanggal);
+        console.info(tes[4].tanggal);
+        console.info(tes[5].tanggal);
+        console.info(tes[0].passed);
+        console.info(tes[0].fail);
+        console.info(tes[1].passed);
+        console.info(tes[1].fail);
+        console.info(tes[2].passed);
+        console.info(tes[2].fail);
+        console.info(tes[3].passed);
+        console.info(tes[3].fail);
+        console.info(tes[4].passed);
+        console.info(tes[4].fail);
+        console.info(tes[5].passed);
+        console.info(tes[5].fail);
+        // console.info(tes[2].t2.fail);
         // console.info(tes[2].tanggal);
         socket.emit('video', tes);
       });
 
-      connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%Home%" GROUP BY hasil',function(err,temp){
-        if(err) throw err;
-        console.log('hasil tempramas')
-        console.info(temp[0].jumlah);
-        console.info(temp[1].jumlah);
-        // console.info(tes[2].tanggal);
-        socket.emit('tempramas', temp);
-      });
+  //     connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%Home%" GROUP BY hasil',function(err,temp){
+  //       if(err) throw err;
+  //       console.log('hasil tempramas')
+  //       console.info(temp[0].jumlah);
+  //       console.info(temp[1].jumlah);
+  //       // console.info(tes[2].tanggal);
+  //       socket.emit('tempramas', temp);
+  //     });
       
-    //   socket.on('clientEvent', function(data) {
-    //     console.log(data);
-    //  });
+  //   //   socket.on('clientEvent', function(data) {
+  //   //     console.log(data);
+  //   //  });
 
-    socket.on('setUsername', function(data) {
-      if(users.indexOf(data) > -1) {
-         users.push(data);
-         socket.emit('userSet', {username: data});
-      } else {
-         socket.emit('userExists', data + ' username is taken! Try some other username.');
-      }
-   })
+  //   socket.on('setUsername', function(data) {
+  //     if(users.indexOf(data) > -1) {
+  //        users.push(data);
+  //        socket.emit('userSet', {username: data});
+  //     } else {
+  //        socket.emit('userExists', data + ' username is taken! Try some other username.');
+  //     }
+  //  })
     });
 
      //   socket.on('div', function(json){
