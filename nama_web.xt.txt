@@ -1,7 +1,10 @@
-http://bukutamu-dev.divmu.pindad.co.id/
-http://perkakas.divmu.pindad.co.id/
-http://tempramas.divmu.pindad.co.id/home
-http://simonkak.divmu.pindad.co.id/users/login
-http://video.divmu.pindad.co.id/
+http://bukutamu-dev.divmu.pindad.co.id/ (pak jeffry)
+http://perkakas.divmu.pindad.co.id/ (pak nurhadi)
+http://tempramas.divmu.pindad.co.id/home (pak rizky)
+http://simonkak-dev.divmu.pindad.co.id/users/login (pak sofi)
+http://video.divmu.pindad.co.id/ (pak nurhadi)
+http://bts.divmu.pindad.co.id/ (pak tauhid)
 
  login admin, admin123 / resepsionis, resepsionis123 (bukutamu)
+
+ inner join

@@ -66,11 +66,12 @@ io.on('connection', function(socket){
       });
 
       // //menampilkan isi yang passed
-      connection.query(" SELECT COUNT(hasil) AS jumlah FROM record WHERE nama_web LIKE '%Video%' GROUP BY hasil;",function(err,tes){
+      connection.query(" SELECT tanggal, hasil, COUNT(hasil) AS jumlah FROM record GROUP BY tanggal;",function(err,tes){
         if(err) throw err;
         console.log('hasil test')
         console.info(tes[0].jumlah);
         console.info(tes[1].jumlah);
+        // console.info(tes[2].tanggal);
         socket.emit('test', tes);
       });
       
