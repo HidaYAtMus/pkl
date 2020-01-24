@@ -2,139 +2,106 @@ const webdriver = require('selenium-webdriver'),
 io = require("socket.io-client"),
 ioClient = io.connect("http://localhost:8000");
 
+let nama_web = ('http://perkakas.divmu.pindad.co.id/');
+
 function pindad(){
-    var driver = new webdriver.Builder().forBrowser('chrome').build();
+    let driver = new webdriver.Builder().forBrowser('chrome').build();
 
     driver.get('http://perkakas.divmu.pindad.co.id/').then(function(){
-    driver.findElement(webdriver.By.css("li:nth-child(2) strong")).click().then(function(){
-            function sleep(){
-                driver.sleep(10).then(function() {
-                    driver.getTitle().then(function(title) {
-                      if(title === 'ok') {
-                        console.log('Test passed = ', title);
-                        ioClient.emit ('judul', title);
-                        var json = {nama_web : [title],
-                                    fitur : ["click 9"],
-                                    hasil : ["passed"]
-                                  }
+    driver.findElement(webdriver.By.linkText("MUNISI RINGAN")).click().then(function(){
+
+      driver.findElement(webdriver.By.linkText("Kaliber 9 mm")).click(),
+      driver.findElement(webdriver.By.linkText("MU1-TJ")).click(),
+      driver.findElement(webdriver.By.linkText("Perkakas Susun Munisi")).click();
+      function sleep(){
+        driver.sleep(2000).then(function() {
+          driver.getTitle().then(function(title) {
+            if(title === title) {
+                console.log('Test passed = ', title);
+                ioClient.emit ('judul', title);
+                var json = {nama_web : [nama_web],
+                            fitur : ["click_perkakas_susun"],
+                            hasil : ["passed"]
+                           }
                         
-                        console.log(json);
-                        ioClient.emit('kirim', json);
-                      } else {
-                        console.log('Test failed =', title);
-                        ioClient.emit ('judul', 'gagal');
-                        var json = {nama_web : [title],
-                          fitur : ["click 9"],
-                          hasil : ["fail"]
-                        }
-              
-              console.log(json);
-              ioClient.emit('kirim', json);
-                    }
-                      // driver.quit();
-                    });
-                  });
-                }
-                sleep();
-    });
-     
-    
-    driver.findElement(webdriver.By.linkText("Kaliber 9 mm")).click().then(function(){
-              function sleep(){
-                driver.sleep(10).then(function() {
-                    driver.getTitle().then(function(title) {
-                      if(title === 'ok') {
-                        console.log('Test passed = ', title);
-                        ioClient.emit ('judul', title);
-                        var json = {nama_web : [title],
-                                    fitur :["click 5.56"],
-                                    hasil : ["fail"]
-                                  }
-                        
-                        console.log(json);
-                        ioClient.emit('kirim', json);
-                      } else {
-                        console.log('Test failed =', title);
-                        ioClient.emit ('judul', 'gagal');
-                        var json = {nama_web : [title],
-                          fitur : ["click 9"],
-                          hasil : ["fail"]
-                        }
-              
-              console.log(json);
-              ioClient.emit('kirim', json);
-                    }
-                      // driver.quit();
-                    });
-                  });
-                }
-                sleep();
-            });
-            
-            driver.findElement(webdriver.By.linkText("MU1-TJ")).click().then(function(){
-              function sleep(){
-                driver.sleep(10).then(function() {
-                    driver.getTitle().then(function(title) {
-                      if(title === 'ok') {
-                        console.log('Test passed = ', title);
-                        ioClient.emit ('judul', title);
-                        var json = {nama_web : [title],
-                                    fitur   :["click 7.62"],
-                                    hasil : ["passed"]
-                                  }
-                        
-                        console.log(json);
-                        ioClient.emit('kirim', json);
-                      } else {
-                        console.log('Test failed =', title);
-                        ioClient.emit ('judul', 'gagal');
-                        var json = {nama_web : [title],
-                          fitur : ["click 9"],
-                          hasil : ["fail"]
-                        }
-              
-              console.log(json);
-              ioClient.emit('kirim', json);
-                    }
-                      driver.quit();
-                    });
-                  });
-                }
-                sleep();
-            });
-           
-            driver.findElement(webdriver.By.linkText("Perkakas Susun Munisi")).click().then(function(){
-                function sleep(){
-                  driver.sleep(10).then(function() {
-                      driver.getTitle().then(function(title) {
-                        if(title === 'ok') {
-                          console.log('Test passed = ', title);
-                          ioClient.emit ('judul', title);
-                          var json = {nama_web : [title],
-                                      fitur   :["click 7.62"],
-                                      hasil : ["passed"]
-                                    }
-                          
-                          console.log(json);
-                          ioClient.emit('kirim', json);
-                        } else {
-                          console.log('Test failed =', title);
-                          ioClient.emit ('judul', 'gagal');
-                          var json = {nama_web : [title],
-                            fitur : ["click 9"],
-                            hasil : ["fail"]
-                          }
-                
-                console.log(json);
-                ioClient.emit('kirim', json);
-                      }
-                        driver.quit();
-                      });
-                    });
+                 console.log(json);
+                 ioClient.emit('kirim', json);
+                 } else { 
+                  console.log('Test failed =', title);
+                  ioClient.emit ('judul', title);
+                  var json = {nama_web : [title],
+                              fitur : ["click_perkakas_susun"],
+                              hasil : ["fail"]
                   }
-                  sleep();
-              });
+                  console.log(json);
+                  ioClient.emit('kirim', json);
+                 }
+                    driver.quit();
+                 });
+            });
+          }
+            sleep();
+    });
+    // driver.findElement(webdriver.By.linkText("MU1-TJ")).click().then(function(){
+    //   function sleep(){
+    //     driver.sleep(2000).then(function() {
+    //       driver.getTitle().then(function(title) {
+    //         if(title === title) {
+    //             console.log('Test passed = ', title);
+    //             // ioClient.emit ('vid', title);
+    //             var json = {nama_web : [title],
+    //                         fitur : ["input_music"],
+    //                         hasil : ["passed"]
+    //                        }
+                        
+    //              console.log(json);
+    //              ioClient.emit('kirim', json);
+    //              } else {
+    //               console.log('Test failed =', title);
+    //               ioClient.emit ('judul', title);
+    //               var json = {nama_web : [title],
+    //                           fitur : ["input_music"],
+    //                           hasil : ["fail"]
+    //               }
+    //               console.log(json);
+    //               ioClient.emit('kirim', json);
+    //              }
+    //                 driver.quit();
+    //              });
+    //         });
+    //       }
+    //         sleep();
+    // });
+    // driver.findElement(webdriver.By.linkText("Perkakas Susun Munisi")).click().then(function(){
+    //   function sleep(){
+    //     driver.sleep(2000).then(function() {
+    //       driver.getTitle().then(function(title) {
+    //         if(title === 'ok') {
+    //             console.log('Test passed = ', title);
+    //             // ioClient.emit ('vid', title);
+    //             var json = {nama_web : [title],
+    //                         fitur : ["click_searchbtn"],
+    //                         hasil : ["passed"]
+    //                        }
+                        
+    //              console.log(json);
+    //              ioClient.emit('kirim', json);
+    //              } else {
+    //               console.log('Test failed =', title);
+    //               ioClient.emit ('judul', title);
+    //               var json = {nama_web : [title],
+    //                           fitur : ["click_searchbtn"],
+    //                           hasil : ["fail"]
+    //               }
+    //               console.log(json);
+    //               ioClient.emit('kirim', json);
+    //              }
+    //                 driver.quit();
+    //              });
+    //         });
+    //       }
+    //         sleep();
+    // });
 });    
 }
 pindad();
-
