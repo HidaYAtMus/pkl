@@ -41,14 +41,12 @@ connection.connect(function(err) {
 }
 });
  
-// Pengambilan Date Time
-let today = new Date(),
- dd = String(today.getDate()).padStart(2, '0'),
- mm = String(today.getMonth() + 1).padStart(2, '0'), //January is 0!
- yyyy = today.getFullYear(),
- time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-// Pengambilan Date Time
 
+let today = new Date(),
+    dd = String(today.getDate()).padStart(2, '0'),
+    mm = String(today.getMonth() + 1).padStart(2, '0'), //January is 0!
+    yyyy = today.getFullYear(),
+    time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
 today = yyyy + '/' + mm + '/' + dd + '/' + time;
 
@@ -153,7 +151,7 @@ io.on('connection', function(socket){
   //       // console.info(tes[2].tanggal);
   //       socket.emit('tempramas', temp);
   //     });
-      
+
   //   //   socket.on('clientEvent', function(data) {
   //   //     console.log(data);
   //   //  });
