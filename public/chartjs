@@ -1,0 +1,51 @@
+LINE
+//     var chart = new Chart(ctx, {
+  //   // The type of chart we want to create
+  //   type: 'bar',
+
+  //   // The data for our dataset
+  //   data: {
+  //       labels: [tes[2].tanggal],
+  //       datasets: [{
+  //           label: 'passed',
+  //           // backgroundColor: ['rgb(255, 99, 132)'],
+  //           borderColor: 'rgb(0, 200, 0)',
+  //           data: [62,23,53,64,72,31,63]
+  //       },{
+  //           label: 'Fail',
+  //           // backgroundColor: ['rgb(0,0,0)'],
+  //           borderColor: 'rgb(0, 0, 0)',
+  //           data: [12,35,53,73,24,25,51]
+  //       }
+  //     ]
+  //   },
+  // });
+//     // Configuration options go here
+//     options: {}
+// });
+      // var myChart = new Chart(ctx, {
+      //     type: 'bar', //type jenis grafiknya
+      //       data: {
+      //         labels: ["Passed", "Fail"],
+      //           datasets: [{
+      //              label: 'Hasil Data Pindad.com' , //judul data 
+      //              data: [[tes[0].jumlah], [tes[1].jumlah]], //nilai data
+      //              backgroundColor: [ //warna grafik
+      //                'rgba(63, 255, 128)',
+      //                'rgba(220,20,60)'
+      //                 ],
+      //              borderColor: [ //warna garis grafik
+      //                 'rgba(54, 162, 235, 1)',
+      //                 'rgba(255,99,132,1)'
+      //                 ],
+      //               borderWidth: 0
+      //             }]
+      //           },
+      //           options: {
+      //                   yAxes: [{
+      //                       ticks: {
+      //                           beginAtZero:true
+      //                       }
+      //                   }]
+      //           }
+      //       });

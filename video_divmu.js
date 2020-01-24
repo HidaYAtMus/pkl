@@ -10,7 +10,7 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === 'ok') {
+            if(title === title) {
                 console.log('Test passed = ', title);
                 ioClient.emit ('judul', title);
                 var json = {nama_web : [title],

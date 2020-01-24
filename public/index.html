@@ -27,9 +27,10 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 
 
@@ -44,7 +45,8 @@
         var socket = io.connect('http://localhost:8000', {'reconnect': true, 'force new connection': true, 'connect timeout': 1000})
 </script>
 <body>
-
+ 
+   
   <!--==========================
     Header
   ============================-->
@@ -62,14 +64,14 @@
           <li class="menu-active"><a href="#intro">Home</a></li>
           <li><a href="#about">Hasil Test</a></li>
           <li><a href="#team">Team</a></li>
-          <li class="menu-has-children"><a href="">Drop Down</a>
+          <!-- <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -88,57 +90,30 @@
 
           <div class="carousel-item active">
             <div class="carousel-background"><img src="img/intro-carousel/1.jpg" alt=""></div>
-            <div class="carousel-container">
+            <!-- <div class="carousel-container">
               <div class="carousel-content">
                 <h2>We are professional</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="carousel-item">
             <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>At vero eos et accusamus</h2>
-                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
+            
           </div>
 
           <div class="carousel-item">
             <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Temporibus autem quibusdam</h2>
-                <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
             </div>
-          </div>
 
           <div class="carousel-item">
             <div class="carousel-background"><img src="img/intro-carousel/4.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Nam libero tempore</h2>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
           </div>
 
           <div class="carousel-item">
             <div class="carousel-background"><img src="img/intro-carousel/5.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Magnam aliquam quaerat</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -156,6 +131,7 @@
       </div>
     </div>
   </section><!-- #intro -->
+
 
   <main id="main">
 
@@ -185,7 +161,7 @@
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#youtube" id='youtube'>Youtube</a></h4>
+                    <h4><a href="#youtube" id='youtube'>Video_Divmu</a></h4>
                     <p>App</p>
                   <script>
                     socket.emit('clientEvent', 'zzz');          
@@ -202,7 +178,7 @@
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="hasil2">Video Divmu</a></h4>
+                    <h4><a href="#video">Tempramas</a></h4>
                     <p>Web</p>
                   </div>
                 </div>
@@ -221,6 +197,49 @@
                 </div>
               </div>
     
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+                <div class="portfolio-wrap">
+                  <figure>
+                    <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
+                  </figure>
+    
+                  <div class="portfolio-info">
+                    <h4><a href="#youtube" id='youtube'>Video_Divmu</a></h4>
+                    <p>App</p>
+                  <script>
+                    socket.emit('clientEvent', 'zzz');          
+                  </script>
+                  
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+                <div class="portfolio-wrap">
+                  <figure>
+                    <img src="img/portfolio/web3.jpg" class="img-fluid" alt="">
+                  </figure>
+    
+                  <div class="portfolio-info">
+                    <h4><a href="#video">Tempramas</a></h4>
+                    <p>Web</p>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+                <div class="portfolio-wrap">
+                  <figure>
+                    <img src="img/portfolio/app2.jpg" class="img-fluid" alt="">
+                  </figure>
+    
+                  <div class="portfolio-info">
+                    <h4><a href="#">App 2</a></h4>
+                    <p>App</p>
+                  </div>
+                </div>
+              </div>
+              
     
     
             </div>
@@ -231,66 +250,180 @@
     <!--==========================
       Facts Section
     ============================-->
-    <section id="youtube"  class="wow fadeIn">
+    <section id="youtube"  class="wow fadeIn1">
+      <h1>Video_Divmu</h1>
       <div class="container">
      
       <!-- <a href="index.html"><img class="img-responsive" src="assets/images/w.png" width="100" height="500" alt="">  </a> -->      
       <div class="page-section" style="position: relative; height:5px; width:50">
-        <h1>Youtube Test</h1>
+        
       </div>
       <canvas id="grafik">      </canvas>
 
       <script type="text/javascript">
-        socket.on('test', function(tes){  
-        console.log(tes[0].jumlah)
-        console.log(tes[1].jumlah)
+        socket.on('video', function(tes){  
 
+        console.info(tes[0].tanggal);
+        console.info(tes[1].tanggal);
+        console.info(tes[2].tanggal);
+        console.info(tes[3].tanggal);
+        console.info(tes[4].tanggal);
+        console.info(tes[0].passed);
+        console.info(tes[0].fail);
+        console.info(tes[1].passed);
+        console.info(tes[1].fail);
+        console.info(tes[2].passed);
+        console.info(tes[2].fail);
+        console.info(tes[3].passed);
+        console.info(tes[3].fail);
+        console.info(tes[4].passed);
+        console.info(tes[4].fail);
+      
+        // console.log(tes[2].tanggal)
       var ctx = document.getElementById("grafik").getContext('2d');
-        var myChart = new Chart(ctx, {
-          type: 'bar', //type jenis grafiknya
-            data: {
-              labels: ["Passed", "Fail"],
-                datasets: [{
-                   label: 'Hasil Data Pindad.com' , //judul data 
-                   data: [tes[1].jumlah, tes[0].jumlah], //nilai data
-                   backgroundColor: [ //warna grafik
-                     'rgba(63, 255, 128)',
-                     'rgba(220,20,60)'
-                      ],
-                   borderColor: [ //warna garis grafik
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255,99,132,1)'
-                      ],
-                    borderWidth: 0
-                  }]
-                },
-                options: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                }
-            });
-          });
+      var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [(tes[0].tanggal),(tes[1].tanggal),(tes[2].tanggal),(tes[3].tanggal),(tes[4].tanggal)],
+        datasets: [{
+            label: 'passed',
+            // backgroundColor: ['rgb(255, 99, 132)'],
+            borderColor: 'rgb(0, 200, 0)',
+            data: [tes[0].passed,tes[1].passed,tes[2].passed,tes[3].passed,tes[4].passed]
+        },{
+            label: 'Fail',
+            // backgroundColor: ['rgb(0,0,0)'],
+            borderColor: 'rgb(	220 20 60)',
+            data: [tes[0].fail,tes[1].fail,tes[2].fail,tes[3].fail,tes[4].fail]
+        }
+      ]
+    },
+  });
+    // Configuration options go here
+    options: {}
+});
       </script>
     </div>
   </div>
     </section><!-- #facts -->
 
-    <!--==========================
-      Portfolio Section
-    ============================-->
-    
-    <!--==========================
-      Clients Section
-    ============================-->
-   
 
-    <!--==========================
-      Team Section
-    ============================-->
-    <section id="team">
+
+       
+    <!-- ChartJS Tempramas -->
+    <!-- <section id="video"  class="section-bg">
+      <section id="about">
+        <div class="container">
+          <h1>Tempramas</h1>
+   
+      <div class="container">
+     <div class="page-section" style="position: relative; height:5px; width:50">
+     </div>
+      <canvas id="div">      </canvas>
+
+      <script type="text/javascript">
+        socket.on('tempramas', function(temp){  
+        console.log(temp[0].jumlah)
+        console.log(temp[1].jumlah)
+        // console.log(tes[2].tanggal)
+      var ctx = document.getElementById("div").getContext('2d');
+  
+              var myChart = new Chart(ctx, {
+            type: 'bar', //type jenis grafiknya
+
+            data: {
+                labels: ["Passed", "Fail"],
+                datasets: [{
+                    label: 'Hasil Data Pindad.com' , //judul data 
+                    data: [temp[1].jumlah, temp[0].jumlah], //nilai data
+                    backgroundColor: [ //warna grafik
+                        'rgba(63, 255, 128)',
+                        'rgba(255, 99, 132)'
+                    ],
+                    borderColor: [ //warna garis grafik
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+          });
+      </script>
+    </div>
+  </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+
+       
+    <!-- ChartJS Tempramas -->
+    <!-- <section id="video"  class="section-bg">
+      
+    <section id="about">
+      <div class="container">
+      <h1>Tempramas</h1>
+    -->
+      <!-- <div class="container">
+     <div class="page-section" style="position: relative; height:5px; width:50">
+     </div>
+      <canvas id="div">      </canvas>
+
+      <script type="text/javascript">
+        socket.on('tempramas', function(temp){  
+        console.log(temp[0].jumlah)
+        console.log(temp[1].jumlah)
+        // console.log(tes[2].tanggal)
+      var ctx = document.getElementById("div").getContext('2d');
+  
+              var myChart = new Chart(ctx, {
+            type: 'bar', //type jenis grafiknya
+            data: {
+                labels: ["Passed", "Fail"],
+                datasets: [{
+                    label: 'Hasil Data Pindad.com' , //judul data 
+                    data: [temp[1].jumlah, temp[0].jumlah], //nilai data
+                    backgroundColor: [ //warna grafik
+                        'rgba(63, 255, 128)',
+                        'rgba(255, 99, 132)'
+                    ],
+                    borderColor: [ //warna garis grafik
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+          });
+      </script>
+    </div>
+  </div>
+    </section>  -->
+
+    <!-- <section id="team">
       <div class="container">
         <div class="section-header wow fadeInUp">
           <h3>Team</h3>
