@@ -1,7 +1,7 @@
 const webdriver = require('selenium-webdriver'), 
 io = require("socket.io-client"),
 ioClient = io.connect("http://localhost:8000");
-let url = ('http://dev.tempramas.divmu.pindad.co.id/home');
+let url = ('http://dev.tempramas.divmu.pindad.co.id/');
 function pindad(){
     var driver = new webdriver.Builder().forBrowser('chrome').build();
 
