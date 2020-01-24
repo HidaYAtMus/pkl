@@ -20,7 +20,7 @@ function pindad(){
                         
                  console.log(json);
                  ioClient.emit('kirim', json);
-                 } else {
+                 } else { 
                   console.log('Test failed =', title);
                   ioClient.emit ('judul', title);
                   var json = {nama_web : [title],
