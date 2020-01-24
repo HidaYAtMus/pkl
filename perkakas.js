@@ -1,9 +1,10 @@
 const webdriver = require('selenium-webdriver'), 
 io = require("socket.io-client"),
 ioClient = io.connect("http://localhost:8000");
+let nama_web = ('http://perkakas.divmu.pindad.co.id/');
 
 function pindad(){
-    var driver = new webdriver.Builder().forBrowser('chrome').build();
+    let driver = new webdriver.Builder().forBrowser('chrome').build();
 
     driver.get('http://perkakas.divmu.pindad.co.id/').then(function(){
     driver.findElement(webdriver.By.linkText("MUNISI RINGAN")).click().then(function(){
@@ -17,7 +18,7 @@ function pindad(){
             if(title === title) {
                 console.log('Test passed = ', title);
                 ioClient.emit ('judul', title);
-                var json = {nama_web : [title],
+                var json = {nama_web : [nama_web],
                             fitur : ["click_perkakas_susun"],
                             hasil : ["passed"]
                            }
