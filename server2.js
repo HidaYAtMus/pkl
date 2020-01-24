@@ -28,7 +28,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '',
+	password: 'root',
 	database: 'testing_web'
   });
 
@@ -42,10 +42,17 @@ connection.connect(function(err) {
 });
  
 // Pengambilan Date Time
-let now = new Date();
-day = dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-console.log(day);
+let today = new Date(),
+ dd = String(today.getDate()).padStart(2, '0'),
+ mm = String(today.getMonth() + 1).padStart(2, '0'), //January is 0!
+ yyyy = today.getFullYear(),
+ time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+// Pengambilan Date Time
 
+
+today = mm + '/' + dd + '/' + yyyy + '/' + time;
+
+console.log(today);
 
 
 io.on('connection', function(socket){
@@ -80,57 +87,57 @@ io.on('connection', function(socket){
           var hour=auxCopia[1];
 
           console.log(date1);
-        console.info(tes[1].tanggal);
-          let date2="2020-01-23T17:00:00.000Z".toString("yyyyMMddHHmmss").
-          replace(/T/, ' ').      
-          replace(/\..+/, '');
+        // console.info(tes[1].tanggal);
+        //   let date2="2020-01-23T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        //   replace(/T/, ' ').      
+        //   replace(/\..+/, '');
 
-          var auxCopia=date2.split(" ");
-          date2=auxCopia[0];
-          var hour=auxCopia[1];
+        //   var auxCopia=date2.split(" ");
+        //   date2=auxCopia[0];
+        //   var hour=auxCopia[1];
 
-          console.log(date2);
-        console.info(tes[2].tanggal);
-          let date3="2020-01-24T17:00:00.000Z".toString("yyyyMMddHHmmss").
-          replace(/T/, ' ').      
-          replace(/\..+/, '');
+        //   console.log(date2);
+        // console.info(tes[2].tanggal);
+        //   let date3="2020-01-24T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        //   replace(/T/, ' ').      
+        //   replace(/\..+/, '');
 
-          var auxCopia=date3.split(" ");
-          date3=auxCopia[0];
-          var hour=auxCopia[1];
+        //   var auxCopia=date3.split(" ");
+        //   date3=auxCopia[0];
+        //   var hour=auxCopia[1];
 
-          console.log(date3);
-        console.info(tes[3].tanggal);
-          let date4="2020-01-25T17:00:00.000Z".toString("yyyyMMddHHmmss").
-          replace(/T/, ' ').      
-          replace(/\..+/, '');
+        //   console.log(date3);
+        // console.info(tes[3].tanggal);
+        //   let date4="2020-01-25T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        //   replace(/T/, ' ').      
+        //   replace(/\..+/, '');
 
-          var auxCopia=date4.split(" ");
-          date4=auxCopia[0];
-          var hour=auxCopia[1];
+        //   var auxCopia=date4.split(" ");
+        //   date4=auxCopia[0];
+        //   var hour=auxCopia[1];
 
-          console.log(date4);
-        console.info(tes[4].tanggal);
-          let date="2020-01-26T17:00:00.000Z".toString("yyyyMMddHHmmss").
-                      replace(/T/, ' ').      
-                      replace(/\..+/, '');
+        //   console.log(date4);
+        // console.info(tes[4].tanggal);
+        //   let date="2020-01-26T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        //               replace(/T/, ' ').      
+        //               replace(/\..+/, '');
       
-                      var auxCopia=date.split(" ");
-                      date=auxCopia[0];
-                      var hour=auxCopia[1];
+        //               var auxCopia=date.split(" ");
+        //               date=auxCopia[0];
+        //               var hour=auxCopia[1];
 
-          console.log(date);
+        //   console.log(date);
 
-        console.info(tes[0].passed);
-        console.info(tes[0].fail);
-        console.info(tes[1].passed);
-        console.info(tes[1].fail);
-        console.info(tes[2].passed);
-        console.info(tes[2].fail);
-        console.info(tes[3].passed);
-        console.info(tes[3].fail);
-        console.info(tes[4].passed);
-        console.info(tes[4].fail);
+        // console.info(tes[0].passed);
+        // console.info(tes[0].fail);
+        // console.info(tes[1].passed);
+        // console.info(tes[1].fail);
+        // console.info(tes[2].passed);
+        // console.info(tes[2].fail);
+        // console.info(tes[3].passed);
+        // console.info(tes[3].fail);
+        // console.info(tes[4].passed);
+        // console.info(tes[4].fail);
         // console.info(tes[5].passed);
         // console.info(tes[5].fail);
         // console.info(tes[2].t2.fail);
