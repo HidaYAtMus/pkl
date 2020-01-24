@@ -3,8 +3,8 @@ const app = require('express')(),
   io = require('socket.io')(http),
   path = require('path'),
   bodyParser=require('body-parser'),
-  mysql = require('mysql'),
-  dateFormat = require('dateformat');
+  mysql = require('mysql');
+  // dateFormat = require('dateformat');
 
   // DATE_FORMATER = require( 'dateformat' );
 app.set('port', process.env.PORT || 8000);
@@ -15,7 +15,7 @@ app.use(require('express').static(path.join(__dirname, 'public')));
 app.use(require('express').static(path.join(__dirname, 'bower_components')));
 
 app.get('/', function(req, res){
-      res.sendFile(__dirname+'/public/hasil.html');
+      res.sendFile(__dirname+'/public');
   });
 
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,7 +50,7 @@ let today = new Date(),
 // Pengambilan Date Time
 
 
-today = mm + '/' + dd + '/' + yyyy + '/' + time;
+today = yyyy + '/' + mm + '/' + dd + '/' + time;
 
 console.log(today);
 
@@ -82,9 +82,9 @@ io.on('connection', function(socket){
           replace(/T/, ' ').      
           replace(/\..+/, '');
 
-          var auxCopia=date1.split(" ");
+          let auxCopia=date1.split(" ");
           date1=auxCopia[0];
-          var hour=auxCopia[1];
+          let hour=auxCopia[1];
 
           console.log(date1);
         // console.info(tes[1].tanggal);
@@ -92,9 +92,9 @@ io.on('connection', function(socket){
         //   replace(/T/, ' ').      
         //   replace(/\..+/, '');
 
-        //   var auxCopia=date2.split(" ");
+        //   let auxCopia=date2.split(" ");
         //   date2=auxCopia[0];
-        //   var hour=auxCopia[1];
+        //   let hour=auxCopia[1];
 
         //   console.log(date2);
         // console.info(tes[2].tanggal);
@@ -102,9 +102,9 @@ io.on('connection', function(socket){
         //   replace(/T/, ' ').      
         //   replace(/\..+/, '');
 
-        //   var auxCopia=date3.split(" ");
+        //   let auxCopia=date3.split(" ");
         //   date3=auxCopia[0];
-        //   var hour=auxCopia[1];
+        //   let hour=auxCopia[1];
 
         //   console.log(date3);
         // console.info(tes[3].tanggal);
@@ -112,9 +112,9 @@ io.on('connection', function(socket){
         //   replace(/T/, ' ').      
         //   replace(/\..+/, '');
 
-        //   var auxCopia=date4.split(" ");
+        //   let auxCopia=date4.split(" ");
         //   date4=auxCopia[0];
-        //   var hour=auxCopia[1];
+        //   let hour=auxCopia[1];
 
         //   console.log(date4);
         // console.info(tes[4].tanggal);
@@ -122,9 +122,9 @@ io.on('connection', function(socket){
         //               replace(/T/, ' ').      
         //               replace(/\..+/, '');
       
-        //               var auxCopia=date.split(" ");
+        //               let auxCopia=date.split(" ");
         //               date=auxCopia[0];
-        //               var hour=auxCopia[1];
+        //               let hour=auxCopia[1];
 
         //   console.log(date);
 
