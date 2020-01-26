@@ -74,9 +74,9 @@ io.on('connection', function(socket){
         if(err) throw err;
         console.log('hasil video')
         
-        console.info(tes[0].tanggal);
+        // console.info(tes[0].tanggal);
         // Convert data
-        let date1="2020-01-22T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        let date1=today.toString("yyyyMMddHHmmss").
           replace(/T/, ' ').      
           replace(/\..+/, '');
 
@@ -142,49 +142,7 @@ io.on('connection', function(socket){
         // console.info(tes[2].tanggal);
         socket.emit('video', tes);
       });
-
-  //     connection.query('SELECT hasil, COUNT(hasil) AS jumlah FROM record where nama_web like"%Home%" GROUP BY hasil',function(err,temp){
-  //       if(err) throw err;
-  //       console.log('hasil tempramas')
-  //       console.info(temp[0].jumlah);
-  //       console.info(temp[1].jumlah);
-  //       // console.info(tes[2].tanggal);
-  //       socket.emit('tempramas', temp);
-  //     });
-
-  //   //   socket.on('clientEvent', function(data) {
-  //   //     console.log(data);
-  //   //  });
-
-  //   socket.on('setUsername', function(data) {
-  //     if(users.indexOf(data) > -1) {
-  //        users.push(data);
-  //        socket.emit('userSet', {username: data});
-  //     } else {
-  //        socket.emit('userExists', data + ' username is taken! Try some other username.');
-  //     }
-  //  })
     });
-
-     //   socket.on('div', function(json){
-    //     let scrape = JSON.stringify(json);
-    //     connection.query("INSERT INTO vid_divmu (nama_web,hasil) VALUES ('" + json.nama_web + "', '" + json.hasil + "');",scrape, function(err, result) {
-    //       if(err) throw err;
-    //       console.log('data inserted');
-    //     });
-    //   });
-
-    //   //menampilkan isi yang passed
-    //   connection.query("SELECT COUNT(hasil) AS hsl FROM vid_divmu GROUP BY hasil",function(err,vid){
-    //     if(err) throw err;
-    //     console.log('hasil video')
-    //     console.info(vid[0].hsl);
-    //     console.info(vid[1].hsl);
-    //     socket.emit('t', vid);
-    //   });
-    // });
-
-
 http.listen(app.get('port'), function() {
   console.log('Server jalan di port ' + app.get('port'));
 });
