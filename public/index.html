@@ -149,28 +149,27 @@
               <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
                 <div class="portfolio-wrap">
                   <figure>
-                    <a href="#vid"><img src="img/portfolio/app1.jpg" class="img-fluid" alt=""></a>
+                    <a href="#vid"><img src="img/portfolio/app1.jpg" class="img-fluid" id="video" alt=""></a>
                   </figure>
     
                   <div class="portfolio-info">
                     <h4><a href="#vid" id="video">Video_Divmu</a></h4>
-                    <p>App</p>
-            
-                  <script type="text/javascript">
-                  $('#video').click(function () {
-                socket.emit('konfirmasi', 'Video_divmu');
-            })
-                    // function konfirmasi() {
-                    //   document.getElementById(data,"video");
-                    //   socket.on('konfirmasi', function(data){
-                    //   ioClient.emit('konfirmasi', data);
-                    //   console.log(youtube)
-                    //   });
-                    // }
-                  </script>
-                        
                   </div>
                 </div>
+                <script type="text/javascript">
+                data="Video_Divmu";
+                  $('#video').click(function () {
+                    socket.emit('konfirmasi', data);
+                  })
+                  // function konfirmasi() {
+                  //   document.getElementById(data,"video");
+                  //   socket.on('konfirmasi', function(data){
+                  //   ioClient.emit('konfirmasi', data);
+                  //   console.log(youtube)
+                  //   });
+                  // }
+                </script>
+                      
               </div>
     
               <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
