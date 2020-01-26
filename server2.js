@@ -28,7 +28,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'root',
+	password: '',
 	database: 'testing_web'
   });
 
@@ -93,7 +93,10 @@ io.on('connection', function(socket){
         console.info(tes[4].fail);
         socket.emit('video', tes);
       });
-
+     
+      socket.on('konfirmasi', function(data) {
+        console.log(data);
+      });
     });
 
 http.listen(app.get('port'), function() {
