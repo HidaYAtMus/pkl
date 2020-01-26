@@ -70,7 +70,7 @@ io.on('connection', function(socket){
       });
 
       //menampilkan isi yang passed
-      connection.query('SELECT t2.tanggal, t2.fail , t1.passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed"GROUP BY tanggal) AS t1 INNER JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
+      connection.query('SELECT DATE_FORMAT(t2.tanggal, "%m/%d/%Y") as tanggal, t2.fail , t1.passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" GROUP BY tanggal) AS t1 INNER JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail"  GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
         if(err) throw err;
         console.log('hasil video')
         
