@@ -40,7 +40,7 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === 'ok') {
+            if(title === title) {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
                 var json = {nama_web : [title],
@@ -70,7 +70,37 @@ function pindad(){
       function sleep(){
         driver.sleep(2000).then(function() {
           driver.getTitle().then(function(title) {
-            if(title === 'ok') {
+            if(title === title) {
+                console.log('Test passed = ', title);
+                // ioClient.emit ('vid', title);
+                var json = {nama_web : [title],
+                            fitur : ["click_searchbtn"],
+                            hasil : ["passed"]
+                           }
+                        
+                 console.log(json);
+                 ioClient.emit('kirim', json);
+                 } else {
+                  console.log('Test failed =', title);
+                  ioClient.emit ('judul', title);
+                  var json = {nama_web : [title],
+                              fitur : ["click_searchbtn"],
+                              hasil : ["fail"]
+                  }
+                  console.log(json);
+                  ioClient.emit('kirim', json);
+                 }
+                    // driver.quit();
+                 });
+            });
+          }
+            sleep();
+    });
+    driver.findElement(webdriver.By.css(".clsvideos:nth-child(2) > li:nth-child(3) .yt-uix-hovercard-target")).click().then(function(){
+      function sleep(){
+        driver.sleep(2000).then(function() {
+          driver.getTitle().then(function(title) {
+            if(title === title) {
                 console.log('Test passed = ', title);
                 // ioClient.emit ('vid', title);
                 var json = {nama_web : [title],
