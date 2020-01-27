@@ -212,19 +212,16 @@
         // console.info(tes[4].passed),
         // console.info(tes[4].fail);
         console.log(tes);
-        
-        // let g = tes[i].tanggal ;
-        let tgl= [];
-          for(i =0; i <= tes.length; i++){
-            let tesss = tes[i].tanggal;
-            let obj = JSON.stringify(tesss);
-        console.log (obj);
-            // let tg = obj[i].tanggal;
-            // // let ob = Object.values(tg);
-            tgl.push(obj);
-            // console.log (tg);
+        let tgl= [],gagal=[],berhasil=[];
+          for(i =0; i < tes.length; i++){
+            obj=Object.values(tes[i]);
+            tgl.push(obj[0]);
+            gagal.push(obj[1]);
+            berhasil.push(obj[2]);
           }
-          console.log("tanggal :", tgl);
+          console.log("array tanggal :", tgl);
+          console.log("array fail :", gagal);
+          console.log("array passed :", berhasil);
       var ctx = document.getElementById("grafik").getContext('2d');
       var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -237,12 +234,12 @@
             label: 'passed',
             // backgroundColor: ['rgb(255, 99, 132)'],
             borderColor: 'rgb(0, 200, 0)',
-            data: [tes[0].passed,tes[1].passed, tes[2].passed, tes[3].passed, tes[4].passed]
+            data: berhasil
         },{
             label: 'Fail',
             // backgroundColor: ['rgb(0,0,0)'],
             borderColor: 'rgb(	220 20 60)',
-            data: [tes[0].fail,tes[1].fail, tes[2].fail, tes[3].fail, tes[4].fail]
+            data: gagal
         }
       ]
     },
