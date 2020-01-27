@@ -28,7 +28,7 @@ app.use(function(req,res,next){
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '',
+	password: 'root',
 	database: 'testing_web'
   });
 
@@ -69,14 +69,15 @@ io.on('connection', function(socket){
         });
       });
 
+      socket.on('konfirmasi', function(data) {
+        console.log(data);
+      
       //menampilkan isi yang passed
       connection.query('SELECT DATE_FORMAT(t2.tanggal, "%m/%d/%Y") as tanggal, t2.fail , t1.passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" GROUP BY tanggal) AS t1 INNER JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail"  GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
         if(err) throw err;
         console.log('hasil video')
         
         console.info(tes[0].tanggal);
-        // Convert data
-       
         console.info(tes[1].tanggal);
         console.info(tes[2].tanggal);
         console.info(tes[3].tanggal);
@@ -92,11 +93,9 @@ io.on('connection', function(socket){
         console.info(tes[4].passed);
         console.info(tes[4].fail);
         socket.emit('video', tes);
-      });
-     
-      socket.on('konfirmasi', function(data) {
-        console.log(data);
-      });
+      });      
+    });
+
     });
 
 http.listen(app.get('port'), function() {
