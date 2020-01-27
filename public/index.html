@@ -159,12 +159,12 @@
                   <figure>
                     <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
                   </figure>
-    
                   <div class="portfolio-info">
                     <h4><a href="#youtube" id='youtube'>Video_Divmu</a></h4>
                     <p>App</p>
                   <script>
-                    socket.emit('clientEvent', 'zzz');          
+                      socket.emit('clientEvent', 'zzz');
+                              
                   </script>
                   
                   </div>
@@ -251,9 +251,9 @@
       Facts Section
     ============================-->
     <section id="youtube"  class="wow fadeIn1">
-      <h1>Video_Divmu</h1>
       <div class="container">
-     
+      <h1>Video_Divmu</h1>
+        
       <!-- <a href="index.html"><img class="img-responsive" src="assets/images/w.png" width="100" height="500" alt="">  </a> -->      
       <div class="page-section" style="position: relative; height:5px; width:50">
         
@@ -262,12 +262,57 @@
 
       <script type="text/javascript">
         socket.on('video', function(tes){  
+          console.info(tes[0].tanggal);
+        // Convert data
+        // let date1="2020-01-22T17:00:00.000Z".toString("yyyyMMddHHmmss").
+        //   replace(/T/, ' ').      
+        //   replace(/\..+/, '');
 
-        console.info(tes[0].tanggal);
+        //   var auxCopia=date1.split(" ");
+        //   date1=auxCopia[0];
+        //   var hour=auxCopia[1];
+
+        //   console.log(date1);
         console.info(tes[1].tanggal);
+          let date2="2020-01-23T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date2.split(" ");
+          date2=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date2);
         console.info(tes[2].tanggal);
+          let date3="2020-01-24T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date3.split(" ");
+          date3=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date3);
         console.info(tes[3].tanggal);
+          let date4="2020-01-25T17:00:00.000Z".toString("yyyyMMddHHmmss").
+          replace(/T/, ' ').      
+          replace(/\..+/, '');
+
+          var auxCopia=date4.split(" ");
+          date4=auxCopia[0];
+          var hour=auxCopia[1];
+
+          console.log(date4);
         console.info(tes[4].tanggal);
+          let date="2020-01-26T17:00:00.000Z".toString("yyyyMMddHHmmss").
+                      replace(/T/, ' ').      
+                      replace(/\..+/, '');
+      
+                      var auxCopia=date.split(" ");
+                      date=auxCopia[0];
+                      var hour=auxCopia[1];
+
+          console.log(date);
         console.info(tes[0].passed);
         console.info(tes[0].fail);
         console.info(tes[1].passed);
@@ -287,7 +332,7 @@
 
     // The data for our dataset
     data: {
-        labels: [(tes[0].tanggal),(tes[1].tanggal),(tes[2].tanggal),(tes[3].tanggal),(tes[4].tanggal)],
+        labels: [(date),(date1),(date2),(date3),(date4)],
         datasets: [{
             label: 'passed',
             // backgroundColor: ['rgb(255, 99, 132)'],
@@ -311,119 +356,8 @@
     </section><!-- #facts -->
 
 
-
-       
-    <!-- ChartJS Tempramas -->
-    <!-- <section id="video"  class="section-bg">
-      <section id="about">
-        <div class="container">
-          <h1>Tempramas</h1>
-   
-      <div class="container">
-     <div class="page-section" style="position: relative; height:5px; width:50">
-     </div>
-      <canvas id="div">      </canvas>
-
-      <script type="text/javascript">
-        socket.on('tempramas', function(temp){  
-        console.log(temp[0].jumlah)
-        console.log(temp[1].jumlah)
-        // console.log(tes[2].tanggal)
-      var ctx = document.getElementById("div").getContext('2d');
-  
-              var myChart = new Chart(ctx, {
-            type: 'bar', //type jenis grafiknya
-
-            data: {
-                labels: ["Passed", "Fail"],
-                datasets: [{
-                    label: 'Hasil Data Pindad.com' , //judul data 
-                    data: [temp[1].jumlah, temp[0].jumlah], //nilai data
-                    backgroundColor: [ //warna grafik
-                        'rgba(63, 255, 128)',
-                        'rgba(255, 99, 132)'
-                    ],
-                    borderColor: [ //warna garis grafik
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255,99,132,1)'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
-          });
-      </script>
-    </div>
-  </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-
-       
-    <!-- ChartJS Tempramas -->
-    <!-- <section id="video"  class="section-bg">
-      
-    <section id="about">
-      <div class="container">
-      <h1>Tempramas</h1>
-    -->
-      <!-- <div class="container">
-     <div class="page-section" style="position: relative; height:5px; width:50">
-     </div>
-      <canvas id="div">      </canvas>
-
-      <script type="text/javascript">
-        socket.on('tempramas', function(temp){  
-        console.log(temp[0].jumlah)
-        console.log(temp[1].jumlah)
-        // console.log(tes[2].tanggal)
-      var ctx = document.getElementById("div").getContext('2d');
-  
-              var myChart = new Chart(ctx, {
-            type: 'bar', //type jenis grafiknya
-            data: {
-                labels: ["Passed", "Fail"],
-                datasets: [{
-                    label: 'Hasil Data Pindad.com' , //judul data 
-                    data: [temp[1].jumlah, temp[0].jumlah], //nilai data
-                    backgroundColor: [ //warna grafik
-                        'rgba(63, 255, 128)',
-                        'rgba(255, 99, 132)'
-                    ],
-                    borderColor: [ //warna garis grafik
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255,99,132,1)'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
-          });
-      </script>
-    </div>
-  </div>
-    </section>  -->
-
-    <!-- <section id="team">
+<!-- 
+    <section id="team">
       <div class="container">
         <div class="section-header wow fadeInUp">
           <h3>Team</h3>
@@ -507,9 +441,9 @@
         </div>
 
       </div>
-    </section><!-- #team -->
+    </section> #team -->
 
-  
+
   </main>
 
   <!--==========================
