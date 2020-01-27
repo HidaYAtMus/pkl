@@ -55,7 +55,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
-          <li><a href="#youtube">Hasil Test</a></li>
+          <li><a href="#about">Hasil Test</a></li>
           <!-- <li><a href="#team">Team</a></li> -->
           <!-- <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
@@ -161,13 +161,6 @@
                   $('#video').click(function () {
                     socket.emit('konfirmasi', data);
                   })
-                  // function konfirmasi() {
-                  //   document.getElementById(data,"video");
-                  //   socket.on('konfirmasi', function(data){
-                  //   ioClient.emit('konfirmasi', data);
-                  //   console.log(youtube)
-                  //   });
-                  // }
                 </script>
                       
               </div>
@@ -175,12 +168,17 @@
               <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
                 <div class="portfolio-wrap">
                   <figure>
-                    <img src="img/portfolio/web3.jpg" class="img-fluid" alt="">
+                    <img src="img/portfolio/web3.jpg" class="img-fluid" id="tempramas" alt="">
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#video">Tempramas</a></h4>
-                    <p>Web</p>
+                    <h4><a href="#tempramas">Tempramas</a></h4>
+                    <script type="text/javascript">
+                      data="Tempramas";
+                        $('#tempramas').click(function () {
+                          socket.emit('konfirmasi', data);
+                        })
+                      </script>                
                   </div>
                 </div>
               </div>
