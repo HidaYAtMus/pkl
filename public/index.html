@@ -144,7 +144,7 @@
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#vid" id="video">Video_Divmu</a></h4>
+                    <h4><a href="#chart_js" id="video">Video_Divmu</a></h4>
                   </div>
                 </div>
                 <script type="text/javascript">
@@ -163,7 +163,7 @@
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#tempramas">Tempramas</a></h4>
+                    <h4><a href="#char_js">Tempramas</a></h4>
                     <script type="text/javascript">
                       data="Tempramas";
                         $('#tempramas').click(function () {
@@ -199,7 +199,7 @@
     <!--==========================
       Facts Section
     ============================-->
-    <section id="vid">
+    <section id="chart_js">
       <div class="container">
       <h1>Video_Divmu</h1>
         
@@ -212,20 +212,6 @@
       <script type="text/javascript">
         socket.on('video', function(tes){  
         console.info(tes.length),
-        console.info(tes[1].tanggal),
-        // console.info(tes[2].tanggal),
-        // console.info(tes[3].tanggal),
-        // console.info(tes[4].tanggal),
-        console.info(tes[0].passed),
-        console.info(tes[0].fail);
-        console.info(tes[1].passed),
-        console.info(tes[1].fail);
-        // console.info(tes[2].passed),
-        // console.info(tes[2].fail);
-        // console.info(tes[3].passed),
-        // console.info(tes[3].fail),
-        // console.info(tes[4].passed),
-        // console.info(tes[4].fail);
         console.log(tes);
         let tgl= [],gagal=[],berhasil=[];
           for(i =0; i < tes.length; i++){
@@ -266,95 +252,6 @@
     </div>
   </div>
     </section><!-- #facts -->
-
-
-<!-- 
-    <section id="team">
-      <div class="container">
-        <div class="section-header wow fadeInUp">
-          <h3>Team</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp">
-            <div class="member">
-              <img src="img/team-1.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                  <div class="social">
-                    <a href=""><i class="fa fa-twitter"></i></a>
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-google-plus"></i></a>
-                    <a href=""><i class="fa fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="member">
-              <img src="img/team-2.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                  <div class="social">
-                    <a href=""><i class="fa fa-twitter"></i></a>
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-google-plus"></i></a>
-                    <a href=""><i class="fa fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="member">
-              <img src="img/team-3.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                  <div class="social">
-                    <a href=""><i class="fa fa-twitter"></i></a>
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-google-plus"></i></a>
-                    <a href=""><i class="fa fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="member">
-              <img src="img/team-4.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                  <div class="social">
-                    <a href=""><i class="fa fa-twitter"></i></a>
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-google-plus"></i></a>
-                    <a href=""><i class="fa fa-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> #team -->
-
 
   </main>
 
