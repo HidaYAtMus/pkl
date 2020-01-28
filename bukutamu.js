@@ -56,13 +56,13 @@ function pindad(){
                       ioClient.emit('kirim', json);
                      }
         });
-        driver.findElement(webdriver.By.css(".nav-item:nth-child(3) p")).click().then(function(){
+        driver.findElement(webdriver.By.css("tbody:nth-child(2) .btn-inverse > .ace-icon")).click().then(function(){
             driver.getTitle().then(function(title) {
                 if(title === title) {
                     console.log('Test passed = ', title);
                     ioClient.emit ('judul', title);
-                    var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                fitur : ["mesin"],
+                    var json = {nama_web : ["http://bukutamu-dev.divmu.pindad.co.id/"],
+                                fitur : ["hapus"],
                                 hasil : ["passed"]
                                }
                             
@@ -71,23 +71,30 @@ function pindad(){
                      } else {
                       console.log('Test failed =', title);
                       ioClient.emit ('judul', title);
-                      var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                  fitur : ["mesin"],
+                      var json = {nama_web : ["http://bukutamu-dev.divmu.pindad.co.id/"],
+                                  fitur : ["hapus"],
                                   hasil : ["fail"]
                       }
                       console.log(json);
                       ioClient.emit('kirim', json);
                      }
         });
-        driver.findElement(webdriver.By.id("userDropdown")).click().then(function(){
-            driver.findElement(webdriver.By.css(".fa-sign-out-alt")).click().then(function(){
-            driver.findElement(webdriver.By.xpath("//a[contains(text(),'Logout')]")).click();
+        driver.findElement(webdriver.By.id("username")).sendKeys("mus").then(function(){
+            driver.findElement(webdriver.By. id("nama")).sendKeys("mus")
+            driver.findElement(webdriver.By.id("password")).sendKeys("mus123").then(function(){
+                driver.findElement(webdriver.By.name("level")).click()
+                {
+                  dropdown = driver.findElement(webdriver.By.name("level"))
+                  dropdown.findElement(webdriver.By.xpath("//option[. = 'Penerima Tamu']")).click()
+                }
+                driver.findElement(webdriver.By.name("level")).click()
+                driver.findElement(webdriver.By.name("btnSubmit")).click()
                 driver.getTitle().then(function(title) {
                     if(title === title) {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
-                        var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                    fitur : ["Logout"],
+                        var json = {nama_web : ["http://bukutamu-dev.divmu.pindad.co.id/"],
+                                    fitur : ["add_user"],
                                     hasil : ["passed"]
                                    }
                                 
@@ -96,8 +103,8 @@ function pindad(){
                          } else {
                           console.log('Test failed =', title);
                           ioClient.emit ('judul', title);
-                          var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                      fitur : ["logout"],
+                          var json = {nama_web : ["http://bukutamu-dev.divmu.pindad.co.id/"],
+                                      fitur : ["add_user"],
                                       hasil : ["fail"]
                           }
                           console.log(json);
