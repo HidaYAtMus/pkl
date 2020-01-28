@@ -15,7 +15,7 @@ function pindad(){
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
                         var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                    fitur : ["Login"],
+                                    fitur : ["LoginUser"],
                                     hasil : ["passed"]
                                    }
                                 
@@ -25,7 +25,7 @@ function pindad(){
                           console.log('Test failed =', title);
                           ioClient.emit ('judul', title);
                           var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
-                                      fitur : ["login"],
+                                      fitur : ["loginUser"],
                                       hasil : ["fail"]
                           }
                           console.log(json);
@@ -33,6 +33,7 @@ function pindad(){
                          }
                             // driver.quit();
         });
+
         driver.findElement(webdriver.By.css(".nav-item:nth-child(2) p")).click().then(function(){
             driver.getTitle().then(function(title) {
                 if(title === title) {
@@ -56,6 +57,7 @@ function pindad(){
                       ioClient.emit('kirim', json);
                      }
         });
+        
         driver.findElement(webdriver.By.css(".nav-item:nth-child(3) p")).click().then(function(){
             driver.getTitle().then(function(title) {
                 if(title === title) {
