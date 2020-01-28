@@ -7,7 +7,7 @@ const app = require('express')(),
   dateFormat = require('dateformat');
 
   // DATE_FORMATER = require( 'dateformat' );
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -26,10 +26,10 @@ app.use(function(req,res,next){
   
 // Configure MySQL connection
 let connection = mysql.createConnection({
-	host: '192.168.196.87',
-	user: 'polinema_debihidayat',
-	password: 'Polinema_2020',
-	database: 'polinema2020_ototest'
+	host: 'localhost',
+	user: 'root',
+	password: 'root',
+	database: 'testing_web'
   });
 
 //Establish MySQL connection
