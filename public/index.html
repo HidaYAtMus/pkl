@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TestingWeb</title>
+  <title>AutoTest</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -47,7 +47,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">TestingWeb</a></h1>
+        <h1><a href="#intro" class="scrollto">AutoTest</a></h1>
       </div>
 
       <nav id="nav-menu-container">
@@ -140,68 +140,78 @@
               <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
                 <div class="portfolio-wrap">
                   <figure>
-                    <a href="#vid"><img src="img/portfolio/app1.jpg" class="img-fluid" id="video" alt=""></a>
+                    <img src="img/video.PNG" class="img-fluid" id="img_video" alt="">
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#vid" id="video">Video_Divmu</a></h4>
+                    <h4><a href="#hasil" id="video">Video</a></h4>
                   </div>
                 </div>
                 <script type="text/javascript">
-                data="video";
                   $('#video').click(function () {
-                    socket.emit('konfirmasi', data);
-                  })
-                </script>
+                      let web = $('#video').text();
+                      console.log(web); 
+                      konfirmasi(web);
+                    });
+                  </script>
                       
               </div>
     
               <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
                 <div class="portfolio-wrap">
                   <figure>
-                    <img src="img/portfolio/web3.jpg" class="img-fluid" id="tempramas" alt="">
+                    <img src="img/tempramas.PNG" class="img-fluid" id="img_tempramas" alt="">
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#tempramas">Tempramas</a></h4>
+                    <h4><a href="#hasil" id="tempramas">Tempramas</a></h4>
                     <script type="text/javascript">
-                      data="Tempramas";
-                        $('#tempramas').click(function () {
-                          socket.emit('konfirmasi', data);
-                        })
+                      $('#tempramas').click(function () {
+                          let web = $('#tempramas').text();
+                          console.log(web); 
+                          konfirmasi(web);
+                        });
                       </script>                
                   </div>
                 </div>
-                <script type="text/javascript">
-                  data="tempramas";
-                    $('#tempramas').click(function () {
-                      socket.emit('konfirmasi', data);
-                    })
-                  </script>
               </div>
     
               <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
                 <div class="portfolio-wrap">
                   <figure>
-                    <img src="img/simpro.PNG" class="img-fluid" alt="">
+                    <img src="img/simpro.PNG" class="img-fluid" id="img_simpro" alt="">
                   </figure>
     
                   <div class="portfolio-info">
-                    <h4><a href="#">App 2</a></h4>
-                    <p>App</p>
+                    <h4><a href="#hasil" id="simpro">Simpro</a></h4>
+                    <script type="text/javascript">
+                      $('#simpro').click(function () {
+                          let web = $('#simpro').text();
+                          console.log(web); 
+                          konfirmasi(web);
+                        });
+                      </script>
                   </div>
                 </div>
               </div> 
             </div>    
+            <script>
+            function konfirmasi (data){
+              socket.emit('konfirmasi', data );
+              $('#judul').text(data); 
+              console.log('Data berhasil dikirim', data);
+              return data;
+            }
+            </script>
           </div>
         </section><!-- #portfolio -->
     
     <!--==========================
       Facts Section
     ============================-->
-    <section id="vid">
+    <section id="hasil">
       <div class="container">
-      <h1>Video_Divmu</h1>
+      <h1 id="judul" > </h1>
         
       <!-- <a href="index.html"><img class="img-responsive" src="assets/images/w.png" width="100" height="500" alt="">  </a> -->      
       <div class="page-section" style="position: relative; height:5px; width:50">
@@ -212,16 +222,16 @@
       <script type="text/javascript">
 
         socket.on('video', function(tes){
-        console.info(tes[0].tanggal),
+        // console.info(tes[0].tanggal),
 
-        console.info(tes[1].tanggal),
-        // console.info(tes[2].tanggal),
-        // console.info(tes[3].tanggal),
-        // console.info(tes[4].tanggal),
-        console.info(tes[0].passed),
-        console.info(tes[0].fail);
-        console.info(tes[1].passed),
-        console.info(tes[1].fail);
+        // console.info(tes[1].tanggal),
+        // // console.info(tes[2].tanggal),
+        // // console.info(tes[3].tanggal),
+        // // console.info(tes[4].tanggal),
+        // console.info(tes[0].passed),
+        // console.info(tes[0].fail);
+        // console.info(tes[1].passed),
+        // console.info(tes[1].fail);
         // console.info(tes[2].passed),
         // console.info(tes[2].fail);
         // console.info(tes[3].passed),
@@ -369,7 +379,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-1 footer-info">
-            <h3>TestingWeb</h3>
+            <h3>AutoTest</h3>
             <p>Web ini digunakan untuk anda yang ingin mengecek website anda</p>
           </div>
 

@@ -74,19 +74,19 @@ io.on('connection', function(socket){
       let nama_web = '%'+data+'%';
       console.log (nama_web);
       //menampilkan isi yang passed
-      connection.query('SELECT DATE_FORMAT(t2.tanggal, "%m/%d/%Y") as tanggal, IFNULL(t2.fail, 0) fail , IFNULL(t1.passed, 0) passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" and nama_web like "'+nama_web+'" GROUP BY tanggal) AS t1 right JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" and nama_web like "'+nama_web+'" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal UNION SELECT DATE_FORMAT(t1.tanggal, "%m/%d/%Y") as tanggal, IFNULL(t2.fail, 0) fail ,iFNULL(t1.passed, 0) passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" and nama_web like "'+nama_web+'" GROUP BY tanggal) AS t1 left JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" and nama_web like "'+nama_web+'" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal;',function(err,tes){
+      connection.query('SELECT DATE_FORMAT(t2.tanggal, "%m/%d/%Y") as tanggal, IFNULL(t2.fail, 0) fail , IFNULL(t1.passed, 0) passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" and nama_web like "'+nama_web+'" GROUP BY tanggal) AS t1 right JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" and nama_web like "'+nama_web+'" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal UNION SELECT DATE_FORMAT(t1.tanggal, "%m/%d/%Y") as tanggal, IFNULL(t2.fail, 0) fail ,iFNULL(t1.passed, 0) passed FROM (SELECT tanggal, COUNT(hasil) AS passed FROM record where hasil = "passed" and nama_web like "'+nama_web+'" GROUP BY tanggal) AS t1 left JOIN ( SELECT tanggal, COUNT(hasil) AS fail FROM record where hasil = "fail" and nama_web like "'+nama_web+'" GROUP BY tanggal)AS t2 ON t2.tanggal=t1.tanggal',function(err,tes){
         if(err) throw err;
         console.log('hasil video')
         
-        console.info(tes[0].tanggal);
-        console.info(tes[1].tanggal);
+        // console.info(tes[0].tanggal);
+        // console.info(tes[1].tanggal);
         // console.info(tes[2].tanggal);
         // console.info(tes[3].tanggal);
         // console.info(tes[4].tanggal);
-        console.info(tes[0].passed);
-        console.info(tes[0].fail);
-        console.info(tes[1].passed);
-        console.info(tes[1].fail);
+        // console.info(tes[0].passed);
+        // console.info(tes[0].fail);
+        // console.info(tes[1].passed);
+        // console.info(tes[1].fail);
         // console.info(tes[2].passed);
         // console.info(tes[2].fail);
         // console.info(tes[3].passed);
