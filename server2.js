@@ -78,21 +78,6 @@ io.on('connection', function(socket){
         if(err) throw err;
         console.log('hasil video')
         
-        // console.info(tes[0].tanggal);
-        // console.info(tes[1].tanggal);
-        // console.info(tes[2].tanggal);
-        // console.info(tes[3].tanggal);
-        // console.info(tes[4].tanggal);
-        // console.info(tes[0].passed);
-        // console.info(tes[0].fail);
-        // console.info(tes[1].passed);
-        // console.info(tes[1].fail);
-        // console.info(tes[2].passed);
-        // console.info(tes[2].fail);
-        // console.info(tes[3].passed);
-        // console.info(tes[3].fail);
-        // console.info(tes[4].passed);
-        // console.info(tes[4].fail);
         socket.emit('video', tes);
       });
     });  

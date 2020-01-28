@@ -15,7 +15,7 @@ function pindad(){
                     if(title === title) {
                         console.log('Test passed = ', title);
                         ioClient.emit ('judul', title);
-                        var json = {nama_web : [title],
+                        var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                     fitur : ["Login"],
                                     hasil : ["passed"]
                                    }
@@ -25,7 +25,7 @@ function pindad(){
                          } else {
                           console.log('Test failed =', title);
                           ioClient.emit ('judul', title);
-                          var json = {nama_web : [title],
+                          var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                       fitur : ["login"],
                                       hasil : ["fail"]
                           }
@@ -42,7 +42,7 @@ function pindad(){
                       if(title === title) {
                           console.log('Test passed = ', title);
                           ioClient.emit ('judul', title);
-                          var json = {nama_web : [title],
+                          var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                       fitur : ["Mesin"],
                                       hasil : ["passed"]
                                      }
@@ -52,7 +52,7 @@ function pindad(){
                            } else {
                             console.log('Test failed =', title);
                             ioClient.emit ('judul', title);
-                            var json = {nama_web : [title],
+                            var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                         fitur : ["Mesin"],
                                         hasil : ["fail"]
                             }
@@ -67,7 +67,7 @@ function pindad(){
                               if(title === title) {
                                   console.log('Test passed = ', title);
                                   ioClient.emit ('judul', title);
-                                  var json = {nama_web : [title],
+                                  var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                               fitur : ["Dashboard"],
                                               hasil : ["passed"]
                                              }
@@ -77,7 +77,7 @@ function pindad(){
                                    } else {
                                     console.log('Test failed =', title);
                                     ioClient.emit ('judul', title);
-                                    var json = {nama_web : [title],
+                                    var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                                 fitur : ["Mesin"],
                                                 hasil : ["fail"]
                                     }
@@ -93,7 +93,7 @@ function pindad(){
                                       if(title === title) {
                                           console.log('Test passed = ', title);
                                           ioClient.emit ('judul', title);
-                                          var json = {nama_web : [title],
+                                          var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                                       fitur : ["Laporan"],
                                                       hasil : ["passed"]
                                                      }
@@ -103,7 +103,7 @@ function pindad(){
                                            } else {
                                             console.log('Test failed =', title);
                                             ioClient.emit ('judul', title);
-                                            var json = {nama_web : [title],
+                                            var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                                         fitur : ["Mesin"],
                                                         hasil : ["fail"]
                                             }
@@ -119,7 +119,7 @@ function pindad(){
                                           if(title === title) {
                                               console.log('Test passed = ', title);
                                               ioClient.emit ('judul', title);
-                                              var json = {nama_web : [title],
+                                              var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                                           fitur : ["Slide"],
                                                           hasil : ["passed"]
                                                          }
@@ -129,7 +129,7 @@ function pindad(){
                                                } else {
                                                 console.log('Test failed =', title);
                                                 ioClient.emit ('judul', title);
-                                                var json = {nama_web : [title],
+                                                var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
                                                             fitur : ["Mesin"],
                                                             hasil : ["fail"]
                                                 }
@@ -139,36 +139,35 @@ function pindad(){
                                                });
                                           });
 
-                                        //   driver.findElement(webdriver.By.css(".d-lg-inline")).click().then(function(){
-                                        //     driver.findElement(webdriver.By.linkText("Logout")).click()
-                                        //     driver.findElement(webdriver.By.class(".modal-footer")).click()
-                                        //     driver.findElement(webdriver.By.linkText("Logout")).click()
-                                        //     driver.getTitle().then(function(title) {
-                                        //       if(title === title) {
-                                        //           console.log('Test passed = ', title);
-                                        //           ioClient.emit ('judul', title);
-                                        //           var json = {nama_web : [title],
-                                        //                       fitur : ["Logout"],
-                                        //                       hasil : ["passed"]
-                                        //                      }
+                                          driver.findElement(webdriver.By.id("userDropdown")).click().then(function(){
+                                            driver.findElement(webdriver.By.css(".fa-sign-out-alt")).click()
+                                            driver.findElement(webdriver.By.xpath("//div[@id='logoutModal']/div/div/div[3]/a")).click()
+                                            driver.getTitle().then(function(title) {
+                                              if(title === title) {
+                                                  console.log('Test passed = ', title);
+                                                  ioClient.emit ('judul', title);
+                                                  var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
+                                                              fitur : ["Logout"],
+                                                              hasil : ["passed"]
+                                                             }
                                                           
-                                        //            console.log(json);
-                                        //            ioClient.emit('kirim', json);
-                                        //            } else {
-                                        //             console.log('Test failed =', title);
-                                        //             ioClient.emit ('judul', title);
-                                        //             var json = {nama_web : [title],
-                                        //                         fitur : ["Mesin"],
-                                        //                         hasil : ["fail"]
-                                        //             }
-                                        //             console.log(json);
-                                        //             ioClient.emit('kirim', json);
-                                        //            }
-                                        //               driver.quit();
-                                        //            });
+                                                   console.log(json);
+                                                   ioClient.emit('kirim', json);
+                                                   } else {
+                                                    console.log('Test failed =', title);
+                                                    ioClient.emit ('judul', title);
+                                                    var json = {nama_web : ["http://simpro.divmu.pindad.co.id/"],
+                                                                fitur : ["logout"],
+                                                                hasil : ["fail"]
+                                                    }
+                                                    console.log(json);
+                                                    ioClient.emit('kirim', json);
+                                                   }
+                                                      driver.quit();
+                                                   });
                                             
                                                    
-                                        //         });
+                                                });
                                                
                       });      
                       
