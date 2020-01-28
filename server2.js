@@ -26,10 +26,10 @@ app.use(function(req,res,next){
   
 // Configure MySQL connection
 let connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: 'root',
-	database: 'testing_web'
+	host: '192.168.196.87',
+	user: 'polinema_debihidayat',
+	password: 'Polinema_2020',
+	database: 'polinema2020_ototest'
   });
 
 //Establish MySQL connection
