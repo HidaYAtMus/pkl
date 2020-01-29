@@ -41,7 +41,7 @@ function pindad(){
                     });
                   });
                 }
-                
+                sleep();
     });
 
     driver.findElement(webdriver.By.css(".top-menu:nth-child(1) > .submeny-top")).click().then(function(){
