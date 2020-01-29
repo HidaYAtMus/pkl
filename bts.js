@@ -223,6 +223,30 @@ function pindad(){
                   ioClient.emit('kirim', json);
               }
               });
+              driver.findElement(webdriver.By.css("li:nth-child(8) > a")).click().then(function(){
+                sleep()
+                driver.getTitle().then(function(title) {
+                    if(title === title) {
+                      console.log('Test passed = ', title);
+                      ioClient.emit ('judul', title);
+                      var json = {nama_web : [nama],
+                                  fitur : ["Logout"],
+                                  hasil : ["passed"]
+                                }              
+                      console.log(json);
+                      ioClient.emit('kirim', json);
+                    } else {
+                      console.log('Test failed =', title);
+                      ioClient.emit ('judul', title);
+                      var json = {nama_web : [nama],
+                                    fitur : ["click"],
+                                    hasil : ["fail"]
+                                 }
+                      console.log(json);
+                      ioClient.emit('kirim', json);
+                  }
+                  });
+                });
         });
     });
 });
