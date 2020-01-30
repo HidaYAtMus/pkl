@@ -63,7 +63,6 @@ function pindad(){
               }
               });
             driver.findElement(webdriver.By.css("li:nth-child(2) > a")).click().then(function(){
-            sleep()
             driver.getTitle().then(function(title) {
                 if(title === title) {
                   console.log('Test passed = ', title);
