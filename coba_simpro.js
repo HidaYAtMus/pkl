@@ -90,8 +90,9 @@ function pindad(){
                       console.log(json);
                       ioClient.emit('kirim', json);
                      }
+            });          
         });
-        });
+        
         }sleep(); 
         driver.findElement(webdriver.By.id("userDropdown")).click().then(function(){
             driver.findElement(webdriver.By.css(".fa-sign-out-alt")).click().then(function(){
@@ -124,9 +125,9 @@ function pindad(){
         }sleep();    
         });
         });
+    });
         });
         });   
-        }); 
         
     });  
 }
@@ -135,3 +136,4 @@ pindad();
 
         
 
+    
